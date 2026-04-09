@@ -1,89 +1,55 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from './assets/vite.svg'
-  import heroImg from './assets/hero.png'
-  import Counter from './lib/Counter.svelte'
+  import { onMount } from 'svelte';
+  let clock = { isLeapSecond: false, hoursFive: 0, hoursOne: 0, minutesFive: 0, minutesOne: 0 };
+
+  async function getTime() {
+    const res = await fetch('http://localhost:8080/time');
+    clock = await res.json();
+  }
+
+  onMount(() => {
+    setInterval(getTime, 1000);
+  });
 </script>
 
-<section id="center">
-  <div class="hero">
-    <img src={heroImg} class="base" width="170" height="179" alt="" />
-    <img src={svelteLogo} class="framework" alt="Svelte logo" />
-    <img src={viteLogo} class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/App.svelte</code> and save to test <code>HMR</code></p>
-  </div>
-  <Counter />
-</section>
+<main class="panel">
+  <div class="clock">  
+    <div class="light round {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
+    
+    <div class="row">
+      {#each Array(4) as _, i}
+        <div class="light {i < clock.hoursFive ? 'red' : 'off'}"></div>
+      {/each}
+    </div>
 
-<div class="ticks"></div>
+    <div class="row">
+      {#each Array(4) as _, i}
+        <div class="light {i < clock.hoursOne ? 'red' : 'off'}">1</div>
+      {/each}
+    </div>
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#documentation-icon"></use>
-    </svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank" rel="noreferrer">
-          <img class="logo" src={viteLogo} alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://svelte.dev/" target="_blank" rel="noreferrer">
-          <img class="button-icon" src={svelteLogo} alt="" />
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#social-icon"></use>
-    </svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li>
-        <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#github-icon"></use>
-          </svg>
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#discord-icon"></use>
-          </svg>
-          Discord
-        </a>
-      </li>
-      <li>
-        <a href="https://x.com/vite_js" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#x-icon"></use>
-          </svg>
-          X.com
-        </a>
-      </li>
-      <li>
-        <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#bluesky-icon"></use>
-          </svg>
-          Bluesky
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+    <div class="row">
+      {#each Array(11) as _, i}
+        <div class="light-small {i < clock.minutesFive ? ((i+1)%3 === 0 ? 'red' : 'yellow') : 'off'}">5</div>
+      {/each}
+    </div>
 
-<div class="ticks"></div>
-<section id="spacer"></section>
+    <div class="row">
+      {#each Array(4) as _, i}
+        <div class="light {i < clock.minutesOne ? 'yellow' : 'off'}">1</div>
+      {/each}
+    </div>
+  </div>  
+</main>
+
+<style>
+  .panel { display: flex; justify-content: center; align-items: center; height: 100vh; background: #222; }
+  .clock { background: #333; padding: 20px; border-radius: 10px; width: 300px; text-align: center; justify-content: center;}
+  .row { display: flex; justify-content: center; gap: 5px; margin-top: 10px; }
+  .light { height: 30px; width: 51px; border: 1px solid #000; }
+  .light-small { height: 30px; width: 14px; border: 1px solid #000; }
+  .round { height: 50px; width: 51px; border-radius: 50%; margin: 0 auto; }
+  .yellow { background: yellow; }
+  .red { background: red; }
+  .off { background: #555; }
+</style>

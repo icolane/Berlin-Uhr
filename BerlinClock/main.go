@@ -6,7 +6,6 @@ import (
 	"time"
 )
 
-// ClockResponse definiert die Struktur der Antwort, die die Werte für die Berliner Uhr enthält
 type ClockResponse struct {
 	IsLeapSecond bool `json:"isLeapSecond"`
 	HoursFive    int  `json:"hoursFive"`
@@ -15,7 +14,6 @@ type ClockResponse struct {
 	MinutesOne   int  `json:"minutesOne"`
 }
 
-// Berechnet die Werte für die Berliner Uhr basierend auf der gegebenen Zeit
 func calculateBerlinClock(t time.Time) ClockResponse {
 	return ClockResponse{
 		IsLeapSecond: t.Second()%2 == 0,
@@ -26,14 +24,11 @@ func calculateBerlinClock(t time.Time) ClockResponse {
 	}
 }
 
-// HTTP-Handler, der die aktuelle Zeit in das Format der Berliner Uhr umwandelt und als JSON zurückgibt
 func clockHandler(w http.ResponseWriter, r *http.Request) {
-
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	json.NewEncoder(w).Encode(calculateBerlinClock(time.Now()))
 }
 
-// Startet den HTTP-Server und bindet den Handler an die Route "/time"
 func main() {
 	http.HandleFunc("/time", clockHandler)
 	http.ListenAndServe(":8080", nil)
