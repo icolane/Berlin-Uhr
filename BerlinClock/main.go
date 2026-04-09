@@ -12,6 +12,7 @@ type ClockResponse struct {
 	HoursOne     int  `json:"hoursOne"`
 	MinutesFive  int  `json:"minutesFive"`
 	MinutesOne   int  `json:"minutesOne"`
+	Seconds      int  `json:"seconds"`
 }
 
 func getBerlinClock(t time.Time) ClockResponse {
@@ -31,6 +32,7 @@ func getBerlinClock(t time.Time) ClockResponse {
 		HoursOne:     hoursOne,
 		MinutesFive:  minutesFive,
 		MinutesOne:   minutesOne,
+		Seconds:      second,
 	}
 }
 

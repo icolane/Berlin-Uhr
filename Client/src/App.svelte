@@ -1,12 +1,19 @@
 <script>
-  import { onMount } from 'svelte';
-  import './App.css';
-  
-  let clock = { isLeapSecond: false, hoursFive: 0, hoursOne: 0, minutesFive: 0, minutesOne: 0 };
+  import { onMount } from "svelte";
+  import "./App.css";
+
+  let clock = {
+    isLeapSecond: false,
+    hoursFive: 0,
+    hoursOne: 0,
+    minutesFive: 0,
+    minutesOne: 0,
+    seconds: 0,
+  };
 
   async function getTime() {
     try {
-      const res = await fetch('http://localhost:8080/time');
+      const res = await fetch("http://localhost:8080/time");
       if (res.ok) {
         clock = await res.json();
       }
@@ -25,37 +32,55 @@
 <main class="panel">
   <div class="clock-container">
     <header class="clock-header">
-      <h1>Berlin Clock</h1>
+      <h1>Berlin-Uhr</h1>
     </header>
-
     <div class="light round {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
-    
-    <!-- 5 Hours -->
+
     <div class="row">
       {#each Array(4) as _, i}
-        <div class="light {i < clock.hoursFive ? 'red' : 'off'}" data-value="5h"></div>
+        <div
+          class="light {i < clock.hoursFive ? 'red' : 'off'}"
+          data-value="5h"
+        ></div>
       {/each}
     </div>
 
-    <!-- 1 Hour -->
     <div class="row">
       {#each Array(4) as _, i}
-        <div class="light {i < clock.hoursOne ? 'red' : 'off'}" data-value="1h"></div>
+        <div
+          class="light {i < clock.hoursOne ? 'red' : 'off'}"
+          data-value="1h"
+        ></div>
       {/each}
     </div>
 
-    <!-- 5 Minutes -->
+    <!-- Reihe für 5 Minuten-->
     <div class="row">
       {#each Array(11) as _, i}
-        <div class="light-small {i < clock.minutesFive ? ((i+1)%3 === 0 ? 'red' : 'yellow') : 'off'}" data-value="5m"></div>
+        <div
+          class="light-small {i < clock.minutesFive
+            ? (i + 1) % 3 === 0
+              ? 'red'
+              : 'yellow'
+            : 'off'}"
+          data-value=""
+        ></div>
       {/each}
     </div>
 
-    <!-- 1 Minute -->
     <div class="row">
       {#each Array(4) as _, i}
-        <div class="light {i < clock.minutesOne ? 'yellow' : 'off'}" data-value="1m"></div>
+        <div
+          class="light {i < clock.minutesOne ? 'yellow' : 'off'}"
+          data-value=""
+        ></div>
       {/each}
+    </div>
+
+    <div class="digital-time">
+      {String(clock.hoursFive * 5 + clock.hoursOne).padStart(2, "0")}:{String(
+        clock.minutesFive * 5 + clock.minutesOne,
+      ).padStart(2, "0")}
     </div>
   </div>
 

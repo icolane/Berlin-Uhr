@@ -6,9 +6,10 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --off-color: rgba(255, 255, 255, 0.05);
   --yellow-lit: #ffcc00;
-  --yellow-glow: rgba(255, 204, 0, 0.4);
-  --red-lit: #ff2d55;
-  --red-glow: rgba(255, 45, 85, 0.4);
+  --yellow-glow: rgba(255, 204, 0, 0.5);
+  --red-lit: #c00000;
+  --red-glow: rgba(192, 0, 0, 0.5);
+  --glass-gloss: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
   --accent-font: 'Outfit', sans-serif;
 }
 
@@ -33,21 +34,44 @@ body {
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at center, #1a1a1c 0%, #0d0d0e 100%);
+  background-size: 200% 200%;
+  animation: bgPulse 15s infinite alternate ease-in-out;
+}
+
+@keyframes bgPulse {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
 .clock-container {
   position: relative;
-  background: var(--panel-bg);
-  backdrop-filter: blur(20px);
-  padding: 3rem;
-  border-radius: 40px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(30px) saturate(180%);
+  padding: 3.5rem;
+  border-radius: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 40px 80px -15px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  width: 400px;
-  max-width: 90vw;
+  gap: 2.2rem;
+  width: 500px;
+  max-width: 95vw;
+  overflow: hidden;
+}
+
+.clock-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .clock-header {
@@ -56,12 +80,14 @@ body {
 }
 
 .clock-header h1 {
-  font-weight: 300;
-  letter-spacing: 4px;
+  font-weight: 800;
+  letter-spacing: 8px;
   text-transform: uppercase;
-  font-size: 0.9rem;
-  opacity: 0.6;
+  font-size: 1.2rem;
+  opacity: 1;
   margin: 0;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .row {
@@ -73,14 +99,15 @@ body {
 
 /* Individual light styles */
 .light {
-  height: 45px;
+  height: 52px;
   flex: 1;
   border-radius: 12px;
   background: var(--off-color);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
 }
 
 .light::after {
@@ -90,14 +117,15 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  background: var(--glass-gloss);
   pointer-events: none;
+  opacity: 0.8;
 }
 
 /* Round Leap Second Light */
 .light.round {
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 80px;
   flex: none;
   border-radius: 50%;
   margin: 0 auto 1rem auto;
@@ -105,9 +133,9 @@ body {
 
 /* Smaller Minute Lights */
 .light-small {
-  height: 40px;
+  height: 44px;
   flex: 1;
-  border-radius: 4px;
+  border-radius: 6px;
   background: var(--off-color);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
@@ -117,23 +145,43 @@ body {
 /* States */
 .yellow {
   background: var(--yellow-lit);
-  box-shadow: 0 0 20px var(--yellow-glow), inset 0 0 10px rgba(255,255,255,0.5);
-  border-color: rgba(255,255,255,0.2);
+  box-shadow: 
+    0 0 25px var(--yellow-glow), 
+    inset 0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 2px rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .red {
   background: var(--red-lit);
-  box-shadow: 0 0 20px var(--red-glow), inset 0 0 10px rgba(255,255,255,0.5);
-  border-color: rgba(255,255,255,0.2);
+  box-shadow: 
+    0 0 25px var(--red-glow), 
+    inset 0 0 15px rgba(255, 255, 255, 0.4),
+    0 0 2px rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .off {
   background: var(--off-color);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.digital-time {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  color: #ffffff;
+  opacity: 0.9;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Value labels - Only show when lit or very subtly when off */
-.light::before, .light-small::before {
+.light::before,
+.light-small::before {
   content: attr(data-value);
   position: absolute;
   top: 50%;
@@ -146,20 +194,33 @@ body {
   pointer-events: none;
 }
 
-.light:hover::before, .light-small:hover::before {
+.light:hover::before,
+.light-small:hover::before {
   opacity: 0.3;
 }
 
-.light:not(.off)::before, .light-small:not(.off)::before {
+.light:not(.off)::before,
+.light-small:not(.off)::before {
   opacity: 0.6;
-  color: rgba(0,0,0,0.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 /* Animations */
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .round.yellow {
