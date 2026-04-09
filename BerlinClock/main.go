@@ -14,19 +14,29 @@ type ClockResponse struct {
 	MinutesOne   int  `json:"minutesOne"`
 }
 
-func calculateBerlinClock(t time.Time) ClockResponse {
+func getBerlinClock(t time.Time) ClockResponse {
+	hour := t.Hour()
+	minute := t.Minute()
+	second := t.Second()
+
+	isLeapSecond := second%2 == 1
+	hoursFive := hour / 5
+	hoursOne := hour % 5
+	minutesFive := minute / 5
+	minutesOne := minute % 5
+
 	return ClockResponse{
-		IsLeapSecond: t.Second()%2 == 0,
-		HoursFive:    t.Hour() / 5,
-		HoursOne:     t.Hour() % 5,
-		MinutesFive:  t.Minute() / 5,
-		MinutesOne:   t.Minute() % 5,
+		IsLeapSecond: isLeapSecond,
+		HoursFive:    hoursFive,
+		HoursOne:     hoursOne,
+		MinutesFive:  minutesFive,
+		MinutesOne:   minutesOne,
 	}
 }
 
 func clockHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	json.NewEncoder(w).Encode(calculateBerlinClock(time.Now()))
+	json.NewEncoder(w).Encode(getBerlinClock(time.Now()))
 }
 
 func main() {
