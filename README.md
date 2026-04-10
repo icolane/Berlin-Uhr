@@ -58,6 +58,6 @@ go test -v ./...
 
 ## :camera: Screenshots
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/50112a6b-173e-4fdb-abd1-05658f9be225" alt="Screenshot Berlin-Uhr" width="300">
-  <img src="https://github.com/user-attachments/assets/f77d3d7b-fa65-434f-8f31-e3711aeadb5a" alt="Screenshot Berlin-Uhr CLI" width="300">
+  <img src="https://github.com/user-attachments/assets/50112a6b-173e-4fdb-abd1-05658f9be225" alt="Screenshot Berlin-Uhr" width="600">  
 </p>
+<p align="center"><img src="https://github.com/user-attachments/assets/f77d3d7b-fa65-434f-8f31-e3711aeadb5a" alt="Screenshot Berlin-Uhr CLI" width="600"></p>
