@@ -12,6 +12,12 @@
   --violet-lit: #8b5cf6;
   --violet-glow: rgba(139, 92, 246, 0.4);
 
+  --amber-lit: #ffaa00;
+  --amber-glow: rgba(255, 170, 0, 0.4);
+
+  --lime-lit: #aaff00;
+  --lime-glow: rgba(170, 255, 0, 0.4);
+
   --spacing-unit: 10px;
   --accent-font: 'Outfit', sans-serif;
   --white-glow: 0 0 15px rgba(255, 255, 255, 0.7);
@@ -94,9 +100,9 @@ body {
 }
 
 .seconds-orb.yellow {
-  background: radial-gradient(circle at 40% 30%, var(--cyan-lit), #005566) !important;
-  box-shadow: 0 0 30px var(--cyan-glow), inset 0 5px 15px rgba(255, 255, 255, 0.2) !important;
-  border-color: #005566 !important;
+  background: radial-gradient(circle at 40% 30%, var(--amber-lit), #996600) !important;
+  box-shadow: 0 0 30px var(--amber-glow), inset 0 5px 15px rgba(255, 255, 255, 0.2) !important;
+  border-color: #996600 !important;
 }
 
 .case-line {
@@ -131,19 +137,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.light-small-secsFive{
-  background: #060608;
-  transition: all 0.3s ease;
-  position: relative;
-  border: 1.8px solid #111;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 45px;
-  width: 100px;
-}
-.light-small-secsOne{
+
+.light-small-secsFive {
   background: #060608;
   transition: all 0.3s ease;
   position: relative;
@@ -153,7 +148,20 @@ body {
   justify-content: center;
   align-items: center;
   height: 30px;
-  width: 50px;
+  width: 40px;
+}
+
+.light-small-secsOne {
+  background: #060608;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1.8px solid #111;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 20px;
 }
 
 .light::before,
@@ -198,6 +206,11 @@ body {
 .magenta {
   background: var(--violet-lit) !important;
   box-shadow: 0 0 15px var(--violet-glow) !important;
+}
+
+.lime {
+  background: var(--lime-lit) !important;
+  box-shadow: 0 0 15px var(--lime-glow) !important;
 }
 
 .help-section {

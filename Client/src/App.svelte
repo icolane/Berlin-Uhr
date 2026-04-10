@@ -100,7 +100,7 @@
       <!-- Sekunden (Neu) -->
       <div class="row row-11">
         {#each Array(11) as _, i}
-          <div class="light-small-secsFive {i < clock.secondsFive ? 'magenta' : 'off'}">
+          <div class="light-small-secsFive {i < clock.secondsFive ? 'lime' : 'off'}">
             {#if showDigitalTime && i < clock.secondsFive}
               <span class="segment-value">5s</span>
             {/if}
@@ -110,13 +110,14 @@
 
       <div class="row">
         {#each Array(4) as _, i}
-          <div class="light-small-secsOne {i < clock.secondsOne ? 'magenta' : 'off'}">
+          <div class="light-small-secsOne {i < clock.secondsOne ? 'lime' : 'off'}">
             {#if showDigitalTime && i < clock.secondsOne}
               <span class="segment-value">1s</span>
             {/if}
           </div>
         {/each}
       </div>
+
 
       <div class="help-section">
         <button

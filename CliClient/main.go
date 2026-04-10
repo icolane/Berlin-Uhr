@@ -49,10 +49,11 @@ func printClockToConsole(c ClockResponse) {
 	reset := "\033[0m"
 	fgBlue := "\033[34m"
 	fgCyan := "\033[36m"
-	fgMagenta := "\033[35m"
+	fgGreen := "\033[32m"
 	fgWhite := "\033[97m"
 	fgGray := "\033[90m"
-	fgGreen := "\033[32m"
+	fgStatusGreen := "\033[32m"
+	fgYellow := "\033[33m"
 
 	// Window Title setzen & Cursor an den Anfang
 	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
@@ -60,12 +61,12 @@ func printClockToConsole(c ClockResponse) {
 
 	s := fgGray + "░░" + reset
 	if c.IsLeapSecond {
-		s = fgCyan + "██" + reset
+		s = fgYellow + "██" + reset
 	}
 
 	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
 	fmt.Printf("%s====================================================%s\n", fgCyan, reset)
-	fmt.Printf(" [ SYSTEM STATUS ]:  %sONLINE%s     [ TIME ]: %s %02d:%02d:%02d %s\n", fgGreen, reset, fgWhite, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds, reset)
+	fmt.Printf(" [ SYSTEM STATUS ]:  %sONLINE%s     [ TIME ]: %s %02d:%02d:%02d %s\n", fgStatusGreen, reset, fgWhite, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds, reset)
 	fmt.Printf(" [ BLINKER      ]:  %s\n\n", s)
 
 	printBlockRow(" 5-STUNDEN      ", c.HoursFive, 4, fgBlue, fgGray, "██████")
@@ -96,7 +97,7 @@ func printClockToConsole(c ClockResponse) {
 		char := "██"
 		color := fgGray
 		if i <= c.SecondsFive {
-			color = fgMagenta
+			color = fgGreen
 		} else {
 			char = "░░"
 		}
@@ -104,12 +105,13 @@ func printClockToConsole(c ClockResponse) {
 	}
 	fmt.Println("\n")
 
-	printBlockRow(" 1-SEKUNDE      ", c.SecondsOne, 4, fgMagenta, fgGray, "██████")
+	printBlockRow(" 1-SEKUNDE      ", c.SecondsOne, 4, fgGreen, fgGray, "██████")
 
 	fmt.Printf("%s====================================================%s\n", fgCyan, reset)
-	fmt.Printf(" %sLEGENDE:%s  %s■ STUNDEN%s  %s■ MINUTEN%s  %s■ SEKUNDEN%s\n", fgWhite, reset, fgBlue, reset, fgCyan, reset, fgMagenta, reset)
+	fmt.Printf(" %sLEGENDE:%s  %s■ STUNDEN%s  %s■ MINUTEN%s  %s■ SEKUNDEN%s  %s● BLINKER%s\n", fgWhite, reset, fgBlue, reset, fgCyan, reset, fgGreen, reset, fgYellow, reset)
 	fmt.Printf(" %s(c) 2026 Developed by Daniel Layne%s\n", fgGray, reset)
 }
+
 
 // Zeigt einen  Fehlerbildschirm an, wenn der Server nicht erreichbar ist
 func printErrorToConsole(err error) {
