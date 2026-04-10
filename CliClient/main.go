@@ -26,7 +26,7 @@ func main() {
 	for range ticker.C {
 		resp, err := http.Get("http://localhost:8080/time")
 		if err != nil {
-			fmt.Printf("\rFehler: Der Server ist nicht erreichbar. Es wird jede Sekunde erneut versucht eine Verbindung herzustellen.")
+			printErrorToConsole(err)
 			continue
 		}
 
@@ -35,11 +35,11 @@ func main() {
 		resp.Body.Close()
 
 		if err != nil {
-			fmt.Println("Fehler beim Dekodieren.")
+			printErrorToConsole(err)
 			continue
 		}
 
-		//printClockToConsole(clock)
+		printClockToConsole(clock)
 	}
 }
 
@@ -52,22 +52,23 @@ func printClockToConsole(c ClockResponse) {
 	fgMagenta := "\033[35m"
 	fgWhite := "\033[97m"
 	fgGray := "\033[90m"
+	fgGreen := "\033[32m"
 
-	// Terminal leeren
-	fmt.Print("\033[H\033[2J")
-	fmt.Printf("%sBERLIN-UHR CONSOLE-CLIENT%s\n", fgWhite, reset)
-	fmt.Println("======================================")
+	// Window Title setzen & Cursor an den Anfang
+	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
+	fmt.Print("\033[H")
 
 	s := fgGray + "░░" + reset
 	if c.IsLeapSecond {
 		s = fgCyan + "██" + reset
 	}
-	fmt.Printf("Blinker:            %s  [ %02d:%02d:%02d ]\n\n", s, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds)
+	fmt.Printf(" [ SYSTEM STATUS ]:  %sONLINE%s     [ TIME ]: %s %02d:%02d:%02d %s\n", fgGreen, reset, fgWhite, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds, reset)
+	fmt.Printf(" [ BLINKER      ]:  %s\n\n", s)
 
-	printBlockRow("5-Stunden:  ", c.HoursFive, 4, fgBlue, fgGray, "██████")
-	printBlockRow("1-Stunde:   ", c.HoursOne, 4, fgBlue, fgGray, "██████")
+	printBlockRow(" 5-STUNDEN      ", c.HoursFive, 4, fgBlue, fgGray, "██████")
+	printBlockRow(" 1-STUNDE       ", c.HoursOne, 4, fgBlue, fgGray, "██████")
 
-	fmt.Printf("5-Minuten:  ")
+	fmt.Printf(" 5-MINUTEN      ")
 	for i := 1; i <= 11; i++ {
 		char := "██"
 		color := fgGray
@@ -81,12 +82,13 @@ func printClockToConsole(c ClockResponse) {
 		}
 		fmt.Printf("%s%s%s ", color, char, reset)
 	}
+	fmt.Println("\n")
 
-	printBlockRow("1-Minute:   ", c.MinutesOne, 4, fgCyan, fgGray, "██████")
+	printBlockRow(" 1-MINUTE       ", c.MinutesOne, 4, fgCyan, fgGray, "██████")
 
-	fmt.Println("--------------------------------------")
+	fmt.Printf("%s----------------------------------------------------%s\n", fgGray, reset)
 
-	fmt.Printf("5-Sekunden: ")
+	fmt.Printf(" 5-SEKUNDEN     ")
 	for i := 1; i <= 11; i++ {
 		char := "██"
 		color := fgGray
@@ -97,11 +99,34 @@ func printClockToConsole(c ClockResponse) {
 		}
 		fmt.Printf("%s%s%s ", color, char, reset)
 	}
+	fmt.Println("\n")
 
-	printBlockRow("1-Sekunde:  ", c.SecondsOne, 4, fgMagenta, fgGray, "██████")
+	printBlockRow(" 1-SEKUNDE      ", c.SecondsOne, 4, fgMagenta, fgGray, "██████")
 
-	fmt.Println("======================================")
-	fmt.Printf("%sSoftware by Daniel Layne%s\n", fgCyan, reset)
+	fmt.Printf("%s====================================================%s\n", fgCyan, reset)
+	fmt.Printf(" %sLEGENDE:%s  %s■ STUNDEN%s  %s■ MINUTEN%s  %s■ SEKUNDEN%s\n", fgWhite, reset, fgBlue, reset, fgCyan, reset, fgMagenta, reset)
+	fmt.Printf(" %s(c) 2026 Developed by Daniel Layne%s\n", fgGray, reset)
+}
+
+// Zeigt einen  Fehlerbildschirm an, wenn der Server nicht erreichbar ist
+func printErrorToConsole(err error) {
+	reset := "\033[0m"
+	fgRed := "\033[31m"
+	fgWhite := "\033[97m"
+
+	// Cursor an den Anfang
+	fmt.Print("\033[H\033[2J")
+	fmt.Print("\033]0;BERLIN-UHR | CONNECTION ERROR\007")
+
+	fmt.Printf("%s┌──────────────────────────────────────────────────┐%s\n", fgRed, reset)
+	fmt.Printf("%s│                                                  │%s\n", fgRed, reset)
+	fmt.Printf("%s│   [!] COMMUNICATION ERROR: BACKEND OFFLINE [!]   │%s\n", fgRed, reset)
+	fmt.Printf("%s│                                                  │%s\n", fgRed, reset)
+	fmt.Printf("%s└──────────────────────────────────────────────────┘%s\n\n", fgRed, reset)
+
+	fmt.Printf("%sSTATUS:%s   %sSUCHE SERVER... (http://localhost:8080)%s\n", fgWhite, reset, fgRed, reset)
+	fmt.Printf("%sFEHLER:%s   %v\n\n", fgWhite, reset, err)
+	fmt.Printf("%sDas System versucht jede Sekunde die Verbindung neu aufzubauen.%s\n", fgWhite, reset)
 }
 
 // Hilfsfunktion zur Ausgabe der farbigen Blöcke
@@ -117,4 +142,5 @@ func printBlockRow(label string, active, total int, activeColor, offColor string
 		}
 		fmt.Printf("%s%s%s  ", color, char, reset)
 	}
+	fmt.Println("\n")
 }
