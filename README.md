@@ -57,4 +57,4 @@ go test -v ./...
 ```
 
 ## Screenshots
-
+![Image](https://github.com/user-attachments/assets/50112a6b-173e-4fdb-abd1-05658f9be225)
