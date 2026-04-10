@@ -61,3 +61,12 @@ go test -v ./...
   <img src="https://github.com/user-attachments/assets/50112a6b-173e-4fdb-abd1-05658f9be225" alt="Screenshot Berlin-Uhr" width="600">  
 </p>
 <p align="center"><img src="https://github.com/user-attachments/assets/f77d3d7b-fa65-434f-8f31-e3711aeadb5a" alt="Screenshot Berlin-Uhr CLI" width="600"></p>
+
+## Lizensierung
+
+Credit / Quellenangabe
+
+Dieses Projekt nutzt Code-Teile oder Logiken der Berlin-Uhr von icolane.
+Autor: icolane
+Quelle: https://github.com/icolane/Berlin-Uhr/
+Hinweis: Da das Original-Repository keine explizite Open-Source-Lizenz beinhaltet, liegen alle Urheberrechte am ursprünglichen Code beim Ersteller.
