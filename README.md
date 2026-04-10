@@ -1,6 +1,6 @@
-# Professional Berlin Clock - Multi-Interface System
+# Berlin-Uhr - Client Server Applikation
 
-Dieses Projekt ist eine hochmoderne Implementierung der klassischen Berliner Uhr (Mengenlehreuhr), entwickelt als Fullstack-Anwendung mit Go (Backend) und Svelte (Frontend). Es demonstriert Architektur-Kompetenz durch eine Client-Server-Trennung und bietet sowohl ein High-End Web-Interface als auch einen technoiden CLI-Monitor.
+Dieses Projekt ist eine Implementierung der klassischen Berliner Uhr (<a href="https://de.wikipedia.org/wiki/Berlin-Uhr">Mengenlehreuhr</a>), entwickelt als Fullstack-Anwendung mit Go (Backend) und Svelte (Frontend). Es demonstriert Architektur-Kompetenz durch eine Client-Server-Trennung und bietet sowohl ein High-End Web-Interface als auch einen technoiden CLI-Monitor.
 
 ## 🚀 System-Architektur
 
@@ -56,8 +56,17 @@ cd BerlinClock
 go test -v ./...
 ```
 
-## Screenshots
-
+## :camera: Screenshots
 <p align="center">
-  <img src="assets/berlin-uhr-no-help.jpg" alt="Beschreibung" width="600">
+  <img src="https://github.com/user-attachments/assets/50112a6b-173e-4fdb-abd1-05658f9be225" alt="Screenshot Berlin-Uhr" width="600">  
 </p>
+<p align="center"><img src="https://github.com/user-attachments/assets/f77d3d7b-fa65-434f-8f31-e3711aeadb5a" alt="Screenshot Berlin-Uhr CLI" width="600"></p>
+
+## Lizensierung
+
+Credit / Quellenangabe
+
+<p>Dieses Projekt nutzt Code-Teile oder Logiken der Berlin-Uhr von icolane.
+Autor: icolane
+Quelle: https://github.com/icolane/Berlin-Uhr/
+Hinweis: Da das Original-Repository keine explizite Open-Source-Lizenz beinhaltet, liegen alle Urheberrechte am ursprünglichen Code beim Ersteller.</p>
