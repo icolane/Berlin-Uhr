@@ -17,7 +17,8 @@ cd BerlinClock
 go build -o ../build/BerlinServer.exe main.go
 if ($LASTEXITCODE -eq 0) {
     Write-Host " [OK]" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host " [FEHLER]" -ForegroundColor Red
 }
 cd ..
@@ -28,7 +29,8 @@ cd CliClient
 go build -o ../build/BerlinCLI.exe main.go
 if ($LASTEXITCODE -eq 0) {
     Write-Host " [OK]" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host " [FEHLER]" -ForegroundColor Red
 }
 cd ..
