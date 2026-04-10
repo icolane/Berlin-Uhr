@@ -47,7 +47,7 @@ cd CliClient
 go run main.go
 ```
 
-## 🧪 Qualitätssicherung
+## 🧪 UNIT-Tests
 
 Das Projekt beinhaltet Unit-Tests für die Kernlogik der Zeitberechnung.
 Ausführung der Tests:
