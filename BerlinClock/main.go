@@ -21,7 +21,7 @@ func getBerlinClock(t time.Time) ClockResponse {
 	minute := t.Minute()
 	second := t.Second()
 
-	isLeapSecond := second%2 == 1
+	isLeapSecond := second%2 == 0
 	hoursFive := hour / 5
 	hoursOne := hour % 5
 	minutesFive := minute / 5

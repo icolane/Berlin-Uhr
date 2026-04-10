@@ -1,52 +1,42 @@
-# Berlin-Uhr (Mengenlehreuhr) - Fullstack Application
+# BerlinClock - Go & Svelte Implementation
 
-Dieses Projekt ist eine digitale Nachbildung der berühmten Berliner "Mengenlehreuhr", entwickelt von Dieter Binninger (1975). Es kombiniert ein robustes Backend-System mit einem hochmodernen, interaktiven Frontend, um die Zeitvisualisierung im Basis-5-System ästhetisch ansprechend darzustellen.
+Diese Repository enthält eine Fullstack-Implementierung der Berliner Uhr (Mengenlehreuhr). Die Lösung ist in ein Go-Backend und ein Svelte-Frontend unterteilt, was eine saubere Trennung von Geschäftslogik und Präsentationsschicht ermöglicht.
 
-## 🚀 Projektbeschreibung
+## Architektur & Technologien
 
-Die Berlin-Uhr zeigt die Zeit über ein System von 24 Leuchten an:
-- **Sekundenanzeige**: Ein pulsierender Glas-Orb an der Spitze (blinkt im 2-Sekunden-Takt).
-- **Stunden (5h)**: Die oberste Zeile zeigt 5-Stunden-Blöcke (Rot).
-- **Stunden (1h)**: Die zweite Zeile zeigt einzelne Stunden (Rot).
-- **Minuten (5m)**: Die dritte Zeile zeigt 5-Minuten-Blöcke (Gelb, mit roten Markierungen für 15, 30, 45 Min).
-- **Minuten (1m)**: Die unterste Zeile zeigt einzelne Minuten (Gelb).
+Im Rahmen der Aufgabenstellung wurden **Go** und **Svelte** gewählt, um eine moderne und performante Systemarchitektur abzubilden. Beide Technologien wurden für dieses Projekt neu erschlossen.
 
-Die aktuelle Zeit ergibt sich aus der Addition der leuchtenden Segmente.
+### Backend (Go)
+Das Backend fungiert als zustandsloser Service. Es berechnet die Logik der Berlin-Uhr auf Basis der aktuellen Systemzeit und stellt diese über eine REST-API (`/time`) zur Verfügung.
+- **Unit-Testing**: Die Kernlogik der Zeitumrechnung ist über Go-Tests validiert.
+- **JSON API**: Standardisierte Ausgabe für die Konsumierung durch beliebige Clients.
 
-## 🛠 Technologie-Stack & Architektur
+### Frontend (Svelte)
+Das Frontend visualisiert die Daten des Backends in einem hochwertigen, interaktiven Interface.
+- **UI/UX Design**: Umsetzung in einem fotorealistischen Studio-Setting mit CSS-basierten Shadern für Metall- und Glaseffekte.
+- **Reaktivität**: Automatische Synchronisation mit dem Backend-Service.
+- **Interaktivität**: Optional einblendbare digitale Hilfe für bessere Lesbarkeit.
 
-Gemäß der Aufgabenstellung wurden zwei für das Team neue Technologien gewählt, um den Fokus auf Lernfähigkeit und saubere Codequalität zu legen:
+## Installation & Ausführung
 
-- **Backend: Go (Golang)**
-  - Ein performanter Service, der die Systemzeit in das spezifische Berlin-Uhr-Format umrechnet.
-  - Bereitstellung einer REST-API über den Endpunkt `/time`.
-- **Frontend: Svelte**
-  - Ein reaktives Framework für eine flüssige, komponentenbasierte Darstellung.
-  - **Kreatives Design**: Realistisches "Studio-Look"-Interface mit gebürsteten Metalltexturen, Chrom-Halterung und interaktiven Elementen.
-  - **Interaktivität**: Ein "atmender" Hilfe-Button blendet bei Bedarf eine digitale Zeitanzeige ein.
-
-### Architektur
-Das Projekt folgt einer strikten Trennung zwischen Präsentation (Frontend) und Logik (Backend). Das Backend berechnet die Zustände der Lampen, während das Frontend ausschließlich für die visuelle Shader-Logik und die Benutzerinteraktion zuständig ist.
-
-## 📦 Installation & Start
-
-### Voraussetzungen
-- [Go](https://golang.org/dl/) (mind. v1.18)
-- [Node.js](https://nodejs.org/) (mind. v16)
-
-### 1. Backend starten
+### Backend (Port 8080)
 ```bash
 cd BerlinClock
-go run main.go
+go test ./...    # Ausführen der Unit-Tests
+go run main.go   # Starten des Servers
 ```
-Der Server läuft nun auf `http://localhost:8080`.
 
-### 2. Frontend starten
+### Frontend (Port 5173)
 ```bash
 cd Client
-npm install
-npm run dev
+npm install      # Abhängigkeiten installieren
+npm run dev      # Entwicklungs-Server starten
 ```
-Die Anwendung ist nun unter `http://localhost:5173` erreichbar.
+
+## Projektstruktur
+- `/BerlinClock`: Go-Quellcode inkl. Unit-Tests.
+- `/Client`: Svelte-Frontend (Vite-basiert).
+- `/Client/src/App.css`: Zentrales Stylesheet für das Studio-Design.
+
 ---
-*Entwickelt als Demonstration für saubere Architektur und kreatives UI/UX-Design.*
+*Anmerkung: Das Projekt legt besonderen Wert auf Code-Klarheit und eine hochwertige visuelle Aufbereitung, um die Brücke zwischen klassischer Mengenlehre und modernen Web-Technologien zu schlagen.*
