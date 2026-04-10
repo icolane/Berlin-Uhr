@@ -66,7 +66,7 @@ go test -v ./...
 
 Credit / Quellenangabe
 
-Dieses Projekt nutzt Code-Teile oder Logiken der Berlin-Uhr von icolane.
+<p>Dieses Projekt nutzt Code-Teile oder Logiken der Berlin-Uhr von icolane.
 Autor: icolane
 Quelle: https://github.com/icolane/Berlin-Uhr/
-Hinweis: Da das Original-Repository keine explizite Open-Source-Lizenz beinhaltet, liegen alle Urheberrechte am ursprünglichen Code beim Ersteller.
+Hinweis: Da das Original-Repository keine explizite Open-Source-Lizenz beinhaltet, liegen alle Urheberrechte am ursprünglichen Code beim Ersteller.</p>
