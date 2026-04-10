@@ -56,5 +56,4 @@ cd BerlinClock
 go test -v ./...
 ```
 
----
-*Entwickelt als technischer Beitrag für den Einstellungsprozess bei JTL / Greyhound.*
+
