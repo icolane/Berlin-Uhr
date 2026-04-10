@@ -54,5 +54,6 @@ func main() {
 
 	http.HandleFunc("/time", clockHandler)
 	fmt.Println("Berlin-Uhr Server läuft auf http://localhost:8080")
+	fmt.Println("Verbinden mit dem Webclient unter http://localhost:5173")
 	http.ListenAndServe(":8080", nil)
 }
