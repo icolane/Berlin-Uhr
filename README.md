@@ -58,15 +58,13 @@ go test -v ./...
 ```
 
 ## :camera: Screenshots
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/50112a6b-173e-4fdb-abd1-05658f9be225" alt="Screenshot Berlin-Uhr" width="600">  
-</p>
-<p align="center"><img src="https://github.com/user-attachments/assets/f77d3d7b-fa65-434f-8f31-e3711aeadb5a" alt="Screenshot Berlin-Uhr CLI" width="600"></p>
+<p align="center"><img src="https://github.com/user-attachments/assets/69cb3431-8be4-42f9-bfc5-7635d16f37d0" alt="Screenshot Berlin-Uhr" width="600"></p>
+<p align="center"><img src="https://github.com/user-attachments/assets/f452bdb6-10b2-4e78-9d2d-0957bcf2bb39" alt="Screenshot Berlin-Uhr CLI" width="600"></p>
+
 
 ## Lizensierung
 
 Credit / Quellenangabe
-
 <p>Dieses Projekt nutzt Code-Teile oder Logiken der Berlin-Uhr von icolane.
 Autor: icolane
 Quelle: https://github.com/icolane/Berlin-Uhr/
