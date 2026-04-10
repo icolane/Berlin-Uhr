@@ -16,12 +16,15 @@ func TestBerlinClockLogic(t *testing.T) {
 	if result1.MinutesFive != 11 || result1.MinutesOne != 4 {
 		t.Errorf("Minuten falsch bei :59: erwartet 11x5 + 4, erhalten %d*5 + %d", result1.MinutesFive, result1.MinutesOne)
 	}
+	if result1.SecondsFive != 11 || result1.SecondsOne != 4 {
+		t.Errorf("Sekunden falsch bei :59: erwartet 11x5 + 4, erhalten %d*5 + %d", result1.SecondsFive, result1.SecondsOne)
+	}
 
 	// Teste 00:00:00 (Minimum / Mitternacht)
 	testCase2 := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
 	result2 := getBerlinClock(testCase2)
 
-	if result2.HoursFive != 0 || result2.HoursOne != 0 || result2.MinutesFive != 0 || result2.MinutesOne != 0 {
+	if result2.HoursFive != 0 || result2.HoursOne != 0 || result2.MinutesFive != 0 || result2.MinutesOne != 0 || result2.SecondsFive != 0 || result2.SecondsOne != 0 {
 		t.Errorf("Nullzeit falsch berechnet: %+v", result2)
 	}
 
@@ -29,3 +32,4 @@ func TestBerlinClockLogic(t *testing.T) {
 		t.Errorf("Sekunden-Blinker falsch bei 00:00:00: erwartet true (gerade), erhalten false")
 	}
 }
+

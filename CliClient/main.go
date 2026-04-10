@@ -13,6 +13,8 @@ type ClockResponse struct {
 	HoursOne     int  `json:"hoursOne"`
 	MinutesFive  int  `json:"minutesFive"`
 	MinutesOne   int  `json:"minutesOne"`
+	SecondsFive  int  `json:"secondsFive"`
+	SecondsOne   int  `json:"secondsOne"`
 	Seconds      int  `json:"seconds"`
 }
 
@@ -45,55 +47,77 @@ func main() {
 func printClockToConsole(c ClockResponse) {
 
 	reset := "\033[0m"
-	bgBlue := "\033[44m"
-	bgCyan := "\033[46m"
-	bgOff := "\033[1;100m"
+	fgBlue := "\033[34m"
 	fgCyan := "\033[36m"
+	fgMagenta := "\033[35m"
 	fgWhite := "\033[97m"
+	fgGray := "\033[90m"
 
 	// Terminal leeren
 	fmt.Print("\033[H\033[2J")
 	fmt.Printf("%sBERLIN-UHR CONSOLE-CLIENT%s\n", fgWhite, reset)
 	fmt.Println("======================================")
 
-	s := "  "
+	s := fgGray + "░░" + reset
 	if c.IsLeapSecond {
 		s = fgCyan + "██" + reset
 	}
-	fmt.Printf("Sekunden:           %s  [ %02d:%02d:%02d ]\n\n", s, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds)
+	fmt.Printf("Blinker:            %s  [ %02d:%02d:%02d ]\n\n", s, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds)
 
-	printColorRow("5-Stunden:  ", c.HoursFive, 4, bgBlue, bgOff)
-	printColorRow("1-Stunde:   ", c.HoursOne, 4, bgBlue, bgOff)
+	printBlockRow("5-Stunden:  ", c.HoursFive, 4, fgBlue, fgGray, "██████")
+	printBlockRow("1-Stunde:   ", c.HoursOne, 4, fgBlue, fgGray, "██████")
 
 	fmt.Printf("5-Minuten:  ")
 	for i := 1; i <= 11; i++ {
+		char := "██"
+		color := fgGray
 		if i <= c.MinutesFive {
-			color := bgCyan
+			color = fgCyan
 			if i%3 == 0 {
-				color = bgBlue
+				color = fgBlue
 			}
-			fmt.Printf("%s  %s ", color, reset)
 		} else {
-			fmt.Printf("%s  %s ", bgOff, reset)
+			char = "░░"
 		}
+		fmt.Printf("%s%s%s ", color, char, reset)
 	}
 	fmt.Println("\n")
 
-	printColorRow("1-Minute:   ", c.MinutesOne, 4, bgCyan, bgOff)
+	printBlockRow("1-Minute:   ", c.MinutesOne, 4, fgCyan, fgGray, "██████")
+	
+	fmt.Println("--------------------------------------")
+	
+	fmt.Printf("5-Sekunden: ")
+	for i := 1; i <= 11; i++ {
+		char := "██"
+		color := fgGray
+		if i <= c.SecondsFive {
+			color = fgMagenta
+		} else {
+			char = "░░"
+		}
+		fmt.Printf("%s%s%s ", color, char, reset)
+	}
+	fmt.Println("\n")
+	
+	printBlockRow("1-Sekunde:  ", c.SecondsOne, 4, fgMagenta, fgGray, "██████")
+
 	fmt.Println("======================================")
 	fmt.Printf("%sSoftware by Daniel Layne%s\n", fgCyan, reset)
 }
 
 // Hilfsfunktion zur Ausgabe der farbigen Blöcke
-func printColorRow(label string, active, total int, activeColor, offColor string) {
+func printBlockRow(label string, active, total int, activeColor, offColor string, blockChar string) {
 	reset := "\033[0m"
 	fmt.Print(label)
 	for i := 0; i < total; i++ {
 		color := offColor
+		char := "░░░░░░"
 		if i < active {
 			color = activeColor
+			char = blockChar
 		}
-		fmt.Printf("%s      %s  ", color, reset) // Breite Blöcke
+		fmt.Printf("%s%s%s  ", color, char, reset)
 	}
 	fmt.Println("\n")
 }

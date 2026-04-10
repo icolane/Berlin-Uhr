@@ -7,6 +7,8 @@
     hoursOne: 0,
     minutesFive: 0,
     minutesOne: 0,
+    secondsFive: 0,
+    secondsOne: 0,
     seconds: 0,
   };
 
@@ -44,6 +46,8 @@
       </header>
       <div class="seconds-orb {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
       <div class="case-line"></div>
+      
+      <!-- Stunden -->
       <div class="row">
         {#each Array(4) as _, i}
           <div class="light {i < clock.hoursFive ? 'red' : 'off'}">
@@ -64,6 +68,7 @@
         {/each}
       </div>
 
+      <!-- Minuten -->
       <div class="row row-11">
         {#each Array(11) as _, i}
           <div
@@ -91,6 +96,27 @@
       </div>
 
       <div class="case-line"></div>
+
+      <!-- Sekunden (Neu) -->
+      <div class="row row-11">
+        {#each Array(11) as _, i}
+          <div class="light-small {i < clock.secondsFive ? 'magenta' : 'off'}">
+            {#if showDigitalTime && i < clock.secondsFive}
+              <span class="segment-value">5s</span>
+            {/if}
+          </div>
+        {/each}
+      </div>
+
+      <div class="row">
+        {#each Array(4) as _, i}
+          <div class="light {i < clock.secondsOne ? 'magenta' : 'off'}">
+            {#if showDigitalTime && i < clock.secondsOne}
+              <span class="segment-value">1s</span>
+            {/if}
+          </div>
+        {/each}
+      </div>
 
       <div class="help-section">
         <button

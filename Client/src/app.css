@@ -9,6 +9,9 @@
   --cyan-lit: #008899;
   --cyan-glow: rgba(0, 136, 153, 0.4);
   
+  --violet-lit: #8b5cf6;
+  --violet-glow: rgba(139, 92, 246, 0.4);
+  
   --spacing-unit: 10px; 
   --accent-font: 'Outfit', sans-serif;
   --white-glow: 0 0 15px rgba(255,255,255,0.7);
@@ -127,6 +130,10 @@ body {
 .red { 
   background: var(--blue-lit) !important; 
   box-shadow: 0 0 15px var(--blue-glow) !important; 
+}
+.magenta { 
+  background: var(--violet-lit) !important; 
+  box-shadow: 0 0 15px var(--violet-glow) !important; 
 }
 
 .help-section {

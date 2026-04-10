@@ -13,6 +13,8 @@ type ClockResponse struct {
 	HoursOne     int  `json:"hoursOne"`
 	MinutesFive  int  `json:"minutesFive"`
 	MinutesOne   int  `json:"minutesOne"`
+	SecondsFive  int  `json:"secondsFive"`
+	SecondsOne   int  `json:"secondsOne"`
 	Seconds      int  `json:"seconds"`
 }
 
@@ -27,6 +29,8 @@ func getBerlinClock(t time.Time) ClockResponse {
 	hoursOne := hour % 5
 	minutesFive := minute / 5
 	minutesOne := minute % 5
+	secondsFive := second / 5
+	secondsOne := second % 5
 
 	return ClockResponse{
 		IsLeapSecond: isLeapSecond,
@@ -34,6 +38,8 @@ func getBerlinClock(t time.Time) ClockResponse {
 		HoursOne:     hoursOne,
 		MinutesFive:  minutesFive,
 		MinutesOne:   minutesOne,
+		SecondsFive:  secondsFive,
+		SecondsOne:   secondsOne,
 		Seconds:      second,
 	}
 }
@@ -85,6 +91,11 @@ func printClockToConsole(t time.Time, c ClockResponse) {
 	fmt.Println()
 	
 	printRow("1-Minuten-Reihe:   ", c.MinutesOne, 4, "C")
+	
+	fmt.Println("--------------------------------------")
+	printRow("5-Sekunden-Reihe:  ", c.SecondsFive, 11, "M") // M für Magenta/Pink
+	printRow("1-Sekunden-Reihe:  ", c.SecondsOne, 4, "M")
+	
 	fmt.Println("======================================")
 	fmt.Println("API-Endpunkt erreichbar unter /time")
 }
