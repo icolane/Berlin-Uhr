@@ -39,7 +39,7 @@ func main() {
 			continue
 		}
 
-		printClockToConsole(clock)
+		//printClockToConsole(clock)
 	}
 }
 
@@ -81,12 +81,11 @@ func printClockToConsole(c ClockResponse) {
 		}
 		fmt.Printf("%s%s%s ", color, char, reset)
 	}
-	fmt.Println("\n")
 
 	printBlockRow("1-Minute:   ", c.MinutesOne, 4, fgCyan, fgGray, "██████")
-	
+
 	fmt.Println("--------------------------------------")
-	
+
 	fmt.Printf("5-Sekunden: ")
 	for i := 1; i <= 11; i++ {
 		char := "██"
@@ -98,8 +97,7 @@ func printClockToConsole(c ClockResponse) {
 		}
 		fmt.Printf("%s%s%s ", color, char, reset)
 	}
-	fmt.Println("\n")
-	
+
 	printBlockRow("1-Sekunde:  ", c.SecondsOne, 4, fgMagenta, fgGray, "██████")
 
 	fmt.Println("======================================")
@@ -119,5 +117,4 @@ func printBlockRow(label string, active, total int, activeColor, offColor string
 		}
 		fmt.Printf("%s%s%s  ", color, char, reset)
 	}
-	fmt.Println("\n")
 }
