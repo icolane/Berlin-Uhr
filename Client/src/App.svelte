@@ -35,17 +35,15 @@
   });
 </script>
 
+<!-- Hauptsektion-->
 <main class="mainPanel">
   <div class="clock-assembly">
     <div class="clock-container">
       <header class="clock-header">
         <h1>Berlin-Uhr</h1>
       </header>
-
       <div class="seconds-orb {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
-
       <div class="case-line"></div>
-
       <div class="row">
         {#each Array(4) as _, i}
           <div class="light {i < clock.hoursFive ? 'red' : 'off'}">
@@ -68,7 +66,13 @@
 
       <div class="row row-11">
         {#each Array(11) as _, i}
-          <div class="light-small {i < clock.minutesFive ? ((i + 1) % 3 === 0 ? 'red' : 'yellow') : 'off'}">
+          <div
+            class="light-small {i < clock.minutesFive
+              ? (i + 1) % 3 === 0
+                ? 'red'
+                : 'yellow'
+              : 'off'}"
+          >
             {#if showDigitalTime && i < clock.minutesFive}
               <span class="segment-value">5m</span>
             {/if}
@@ -89,15 +93,22 @@
       <div class="case-line"></div>
 
       <div class="help-section">
-        
-        <button class="help-button {showDigitalTime ? 'active' : ''}" on:click={toggleTime} title="Erklärt die Uhrzeit">
+        <button
+          class="help-button {showDigitalTime ? 'active' : ''}"
+          on:click={toggleTime}
+          title="Erklärt die Uhrzeit"
+        >
           <span class="help-icon">?</span>
         </button>
         {#if showDigitalTime}
-          <div class="digital-time">            
-            {String(clock.hoursFive * 5 + clock.hoursOne).padStart(2, "0")}:{String(
-              clock.minutesFive * 5 + clock.minutesOne,
-            ).padStart(2, "0")}:{String(clock.seconds).padStart(2, "0")}            
+          <div class="digital-time">
+            {String(clock.hoursFive * 5 + clock.hoursOne).padStart(
+              2,
+              "0",
+            )}:{String(clock.minutesFive * 5 + clock.minutesOne).padStart(
+              2,
+              "0",
+            )}:{String(clock.seconds).padStart(2, "0")}
           </div>
         {/if}
       </div>

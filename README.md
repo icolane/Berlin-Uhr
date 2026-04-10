@@ -56,4 +56,7 @@ cd BerlinClock
 go test -v ./...
 ```
 
+## Screenshots
 
+
+![Berlin-Uhr](assets/berlin-uhr-no-help.jpg)
