@@ -4,10 +4,9 @@
   --metal-shine: linear-gradient(135deg, #1a1a1c 0%, #111113 50%, #050505 100%);
   --bg-dark: #000000;
   
-  /* NEW MUTED TECH COLORS */
   --blue-lit: #0055dd; 
   --blue-glow: rgba(0, 85, 221, 0.4);
-  --cyan-lit: #008899; /* DEEPER, LESS BLINDING CYAN */
+  --cyan-lit: #008899;
   --cyan-glow: rgba(0, 136, 153, 0.4);
   
   --spacing-unit: 10px; 
@@ -42,12 +41,12 @@ body {
 
 .clock-container {
   background: var(--metal-shine);
-  padding: 3rem;
+  padding: 2.5rem 3.5rem; /* REDUCED PADDING */
   border-radius: 4px;
   border: 4px solid #1a1a1c;
   box-shadow: 0 40px 80px rgba(0,0,0,1);
   display: flex; flex-direction: column; align-items: center;
-  gap: 1.2rem;
+  gap: 0.7rem; /* REDUCED VERTICAL GAP */
   width: 420px;
   position: relative;
   z-index: 20;
@@ -58,7 +57,7 @@ body {
   font-weight: 800;
   letter-spacing: 4px;
   font-size: 2.8rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.2rem 0;
   color: #fff;
   text-shadow: var(--white-glow);
 }
@@ -70,7 +69,7 @@ body {
   background: radial-gradient(circle at 40% 30%, #252528 0%, #050505 100%);
   border: 2px solid #222;
   box-shadow: inset 0 6px 12px rgba(0,0,0,0.5);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem; /* REDUCED MARGIN */
   position: relative;
 }
 
@@ -82,17 +81,17 @@ body {
 
 .case-line {
   width: 65%; height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
-  margin: 0.2rem 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  margin: 0;
 }
 
 .row {
   display: flex; justify-content: center;
-  gap: 12px;
+  gap: 8px; /* REDUCED HORIZONTAL GAP */
   width: 100%;
 }
 
-.row-11 { gap: 2px; }
+.row-11 { gap: 1px; } /* NEARLY SEAMLESS */
 
 .light, .light-small {
   background: #060608;
@@ -132,7 +131,7 @@ body {
 
 .help-section {
   display: flex; flex-direction: column; align-items: center;
-  width: 100%; margin-top: 1rem;
+  width: 100%; margin-top: 0.8rem; /* REDUCED MARGIN */
 }
 
 .help-button {
@@ -163,7 +162,7 @@ body {
 }
 
 .digital-time {
-  margin-top: 1rem;
+  margin-top: 0.8rem; /* REDUCED MARGIN */
   font-weight: 800; font-size: 1.8rem;
   color: #fff;
   letter-spacing: 4px;
