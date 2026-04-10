@@ -48,12 +48,5 @@ npm install
 npm run dev
 ```
 Die Anwendung ist nun unter `http://localhost:5173` erreichbar.
-
-## 🎨 Kreative Highlights
-- **Studio-Ambiente**: Die Uhr wird in einem professionellen Fotostudio-Setting mit Tiefenunschärfe und weichem Licht präsentiert.
-- **Material-Design**: Einsatz von CSS-Shadern für gebürsteten Edelstahl, Chrom-Reflektionen und pulsierende Glas-Linsen.
-- **Pulsar-Sekunde**: Die Sekunde wird als plastischer Glas-Orb mit einem sanften Licht-Halo visualisiert.
-- **Interaktive Hilfe**: Ein kleiner mechanisch anmutender Button mit analogem Uhr-Icon erlaubt das Einblenden der digitalen Zeit.
-
 ---
 *Entwickelt als Demonstration für saubere Architektur und kreatives UI/UX-Design.*
