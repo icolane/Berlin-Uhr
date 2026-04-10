@@ -62,6 +62,9 @@ func printClockToConsole(c ClockResponse) {
 	if c.IsLeapSecond {
 		s = fgCyan + "██" + reset
 	}
+
+	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
+	fmt.Printf("%s====================================================%s\n", fgCyan, reset)
 	fmt.Printf(" [ SYSTEM STATUS ]:  %sONLINE%s     [ TIME ]: %s %02d:%02d:%02d %s\n", fgGreen, reset, fgWhite, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds, reset)
 	fmt.Printf(" [ BLINKER      ]:  %s\n\n", s)
 
