@@ -11,9 +11,9 @@ Das System besteht aus drei entkoppelten Komponenten:
     *   Echtzeit-Konsolenvisualisierung des Systemstatus via Goroutines.
     *   Abgedeckt durch automatisierte Unit-Tests (`main_test.go`).
 2.  **Web-Frontend (Svelte)**:
-    *   "Cyber-Tech" Design-System im Stealth-Look (Gunmetal / Indigo / Ice-Cyan).
+    *   Design-System im Stealth-Look (Gunmetal / Indigo / Ice-Cyan).
     *   Interaktive Wertigkeits-Explikation: Auf Knopfdruck werden die mathematischen Werte direkt in den Segmenten eingeblendet.
-    *   High-End CSS-Animationen für organische UI-Elemente.
+    *   CSS-Animationen für organische UI-Elemente.
 3.  **CLI-Client (Go)**:
     *   Eigenständige Konsolen-Anwendung, die das Interface direkt in das Terminal rendert (ANSI-Block-Rendering).
     *   Demonstration von Client-Server-Interaktion via HTTP/JSON.
@@ -21,6 +21,7 @@ Das System besteht aus drei entkoppelten Komponenten:
 ## 🎨 Design-Konzept
 
 Im Gegensatz zum klassischen Rot-Gelben Design nutzt diese Version eine moderne Farbpalette aus **Indigo-Blau** (Stunden/Markierungen) und **Eis-Cyan** (Minuten). Dies unterstreicht den technischen Charakter der Lösung und sorgt für eine exzellente Lesbarkeit im Dunkelmodus. Das Gehäuse ist minimalistisch und scharfkantig gestaltet, um industrielle Präzision zu vermitteln.
+Zusätzlich werden die Sekunde auch angezeigt.
 
 ## 🛠️ Installation & Start
 
