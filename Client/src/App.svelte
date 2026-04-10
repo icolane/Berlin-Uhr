@@ -89,14 +89,15 @@
       <div class="case-line"></div>
 
       <div class="help-section">
-        <button class="help-button {showDigitalTime ? 'active' : ''}" on:click={toggleTime} title="Zeit anzeigen">
+        
+        <button class="help-button {showDigitalTime ? 'active' : ''}" on:click={toggleTime} title="Erklärt die Uhrzeit">
           <span class="help-icon">?</span>
         </button>
         {#if showDigitalTime}
-          <div class="digital-time">
+          <div class="digital-time">            
             {String(clock.hoursFive * 5 + clock.hoursOne).padStart(2, "0")}:{String(
               clock.minutesFive * 5 + clock.minutesOne,
-            ).padStart(2, "0")}:{String(clock.seconds).padStart(2, "0")}
+            ).padStart(2, "0")}:{String(clock.seconds).padStart(2, "0")}            
           </div>
         {/if}
       </div>
