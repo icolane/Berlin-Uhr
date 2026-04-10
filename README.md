@@ -1,42 +1,60 @@
-# BerlinClock - Go & Svelte Implementation
+# Professional Berlin Clock - Multi-Interface System
 
-Diese Repository enthält eine Fullstack-Implementierung der Berliner Uhr (Mengenlehreuhr). Die Lösung ist in ein Go-Backend und ein Svelte-Frontend unterteilt, was eine saubere Trennung von Geschäftslogik und Präsentationsschicht ermöglicht.
+Dieses Projekt ist eine hochmoderne Implementierung der klassischen Berliner Uhr (Mengenlehreuhr), entwickelt als Fullstack-Anwendung mit Go (Backend) und Svelte (Frontend). Es demonstriert Architektur-Kompetenz durch eine Client-Server-Trennung und bietet sowohl ein High-End Web-Interface als auch einen technoiden CLI-Monitor.
 
-## Architektur & Technologien
+## 🚀 System-Architektur
 
-Im Rahmen der Aufgabenstellung wurden **Go** und **Svelte** gewählt, um eine moderne und performante Systemarchitektur abzubilden. Beide Technologien wurden für dieses Projekt neu erschlossen.
+Das System besteht aus drei entkoppelten Komponenten:
 
-### Backend (Go)
-Das Backend fungiert als zustandsloser Service. Es berechnet die Logik der Berlin-Uhr auf Basis der aktuellen Systemzeit und stellt diese über eine REST-API (`/time`) zur Verfügung.
-- **Unit-Testing**: Die Kernlogik der Zeitumrechnung ist über Go-Tests validiert.
-- **JSON API**: Standardisierte Ausgabe für die Konsumierung durch beliebige Clients.
+1.  **Backend (Go-Server)**:
+    *   REST-API zur Bereitstellung der berechneten Uhrzeit-Daten.
+    *   Echtzeit-Konsolenvisualisierung des Systemstatus via Goroutines.
+    *   Abgedeckt durch automatisierte Unit-Tests (`main_test.go`).
+2.  **Web-Frontend (Svelte)**:
+    *   "Cyber-Tech" Design-System im Stealth-Look (Gunmetal / Indigo / Ice-Cyan).
+    *   Interaktive Wertigkeits-Explikation: Auf Knopfdruck werden die mathematischen Werte direkt in den Segmenten eingeblendet.
+    *   High-End CSS-Animationen für organische UI-Elemente.
+3.  **CLI-Client (Go)**:
+    *   Eigenständige Konsolen-Anwendung, die das Interface direkt in das Terminal rendert (ANSI-Block-Rendering).
+    *   Demonstration von Client-Server-Interaktion via HTTP/JSON.
 
-### Frontend (Svelte)
-Das Frontend visualisiert die Daten des Backends in einem hochwertigen, interaktiven Interface.
-- **UI/UX Design**: Umsetzung in einem fotorealistischen Studio-Setting mit CSS-basierten Shadern für Metall- und Glaseffekte.
-- **Reaktivität**: Automatische Synchronisation mit dem Backend-Service.
-- **Interaktivität**: Optional einblendbare digitale Hilfe für bessere Lesbarkeit.
+## 🎨 Design-Konzept
 
-## Installation & Ausführung
+Im Gegensatz zum klassischen Rot-Gelben Design nutzt diese Version eine moderne Farbpalette aus **Indigo-Blau** (Stunden/Markierungen) und **Eis-Cyan** (Minuten). Dies unterstreicht den technischen Charakter der Lösung und sorgt für eine exzellente Lesbarkeit im Dunkelmodus. Das Gehäuse ist minimalistisch und scharfkantig gestaltet, um industrielle Präzision zu vermitteln.
 
-### Backend (Port 8080)
+## 🛠️ Installation & Start
+
+### 1. Backend & Server
+Navigiere in das `BerlinClock` Verzeichnis und starte den Server:
 ```bash
 cd BerlinClock
-go test ./...    # Ausführen der Unit-Tests
-go run main.go   # Starten des Servers
+go run main.go
 ```
+*Der Server ist nun unter `http://localhost:8080/time` erreichbar.*
 
-### Frontend (Port 5173)
+### 2. Web-Frontend (UI)
+Navigiere in das `Client` Verzeichnis, installiere die Abhängigkeiten und starte den Dev-Server:
 ```bash
 cd Client
-npm install      # Abhängigkeiten installieren
-npm run dev      # Entwicklungs-Server starten
+npm install
+npm run dev
 ```
 
-## Projektstruktur
-- `/BerlinClock`: Go-Quellcode inkl. Unit-Tests.
-- `/Client`: Svelte-Frontend (Vite-basiert).
-- `/Client/src/App.css`: Zentrales Stylesheet für das Studio-Design.
+### 3. Console-Client (CLI)
+Navigiere in das `CliClient` Verzeichnis und starte den Monitor:
+```bash
+cd CliClient
+go run main.go
+```
+
+## 🧪 Qualitätssicherung
+
+Das Projekt beinhaltet Unit-Tests für die Kernlogik der Zeitberechnung.
+Ausführung der Tests:
+```bash
+cd BerlinClock
+go test -v ./...
+```
 
 ---
-*Anmerkung: Das Projekt legt besonderen Wert auf Code-Klarheit und eine hochwertige visuelle Aufbereitung, um die Brücke zwischen klassischer Mengenlehre und modernen Web-Technologien zu schlagen.*
+*Entwickelt als technischer Beitrag für den Einstellungsprozess bei JTL / Greyhound.*
