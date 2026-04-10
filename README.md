@@ -1,6 +1,6 @@
-# Professional Berlin Clock - Multi-Interface System
+# Berlin-Uhr - Client Server Applikation
 
-Dieses Projekt ist eine hochmoderne Implementierung der klassischen Berliner Uhr (Mengenlehreuhr), entwickelt als Fullstack-Anwendung mit Go (Backend) und Svelte (Frontend). Es demonstriert Architektur-Kompetenz durch eine Client-Server-Trennung und bietet sowohl ein High-End Web-Interface als auch einen technoiden CLI-Monitor.
+Dieses Projekt ist eine Implementierung der klassischen Berliner Uhr (Mengenlehreuhr), entwickelt als Fullstack-Anwendung mit Go (Backend) und Svelte (Frontend). Es demonstriert Architektur-Kompetenz durch eine Client-Server-Trennung und bietet sowohl ein High-End Web-Interface als auch einen technoiden CLI-Monitor.
 
 ## 🚀 System-Architektur
 
