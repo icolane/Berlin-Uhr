@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-// BerlinClock represents the time displayed on a Berlin Clock
 type BerlinClock struct {
 	HoursFive    int
 	HoursOne     int
@@ -14,7 +13,7 @@ type BerlinClock struct {
 	IsLeapSecond bool
 }
 
-// calculateBerlinClock calculates the Berlin Clock time representation
+// calculateBerlinClock berechnet die Werte für die Berliner Uhr basierend auf der gegebenen Zeit
 func calculateBerlinClock(t time.Time) BerlinClock {
 	return BerlinClock{
 		HoursFive:    t.Hour() / 5,

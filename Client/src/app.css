@@ -1,235 +1,249 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;800&display=swap');
 
 :root {
-  --bg-color: #0d0d0e;
-  --panel-bg: rgba(255, 255, 255, 0.03);
-  --border-color: rgba(255, 255, 255, 0.1);
-  --off-color: rgba(255, 255, 255, 0.05);
+  --metal-shine: linear-gradient(135deg, #3a3a3e 0%, #2a2a2e 15%, #1a1a1c 50%, #111113 100%);
+  --bg-dark: #121214;
   --yellow-lit: #ffcc00;
-  --yellow-glow: rgba(255, 204, 0, 0.5);
-  --red-lit: #c00000;
-  --red-glow: rgba(192, 0, 0, 0.5);
-  --glass-gloss: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+  --yellow-glow: rgba(255, 204, 0, 0.4);
+  --red-lit: #c20000;
+  --red-glow: rgba(194, 0, 0, 0.4);
   --accent-font: 'Outfit', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
-  color: #fff;
+  background-color: var(--bg-dark);
   font-family: var(--accent-font);
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.panel {
+.mainPanel {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: 
+    radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%),
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)),
+    url('/studio.png') center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock-assembly {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #1a1a1c 0%, #0d0d0e 100%);
-  background-size: 200% 200%;
-  animation: bgPulse 15s infinite alternate ease-in-out;
-}
-
-@keyframes bgPulse {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
+  z-index: 10;
 }
 
 .clock-container {
-  position: relative;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(30px) saturate(180%);
-  padding: 3.5rem;
-  border-radius: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.02) 100%),
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 4px),
+    var(--metal-shine);
+  padding: 3.5rem 4rem;
+  border-radius: 40px;
+  border: 4px solid #333;
   box-shadow: 
-    0 40px 80px -15px rgba(0, 0, 0, 0.8),
-    inset 0 0 20px rgba(255, 255, 255, 0.05);
+    0 10px 40px rgba(0,0,0,0.5),
+    0 60px 120px rgba(0,0,0,1),
+    inset 0 1px 2px rgba(255,255,255,0.2);
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  align-items: center;
+  gap: 1.8rem;
   width: 500px;
-  max-width: 95vw;
-  overflow: hidden;
+  position: relative;
+  z-index: 20;
 }
 
-.clock-container::before {
+/* Nieten (Rivets) */
+.clock-container::before,
+.clock-container::after,
+.clock-container-inner-screws::before,
+.clock-container-inner-screws::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.3;
-  pointer-events: none;
+  width: 14px; height: 14px;
+  background: radial-gradient(circle at 35% 35%, #555, #111);
+  border-radius: 50%;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
-.clock-header {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
+.clock-container::before { top: 25px; left: 25px; }
+.clock-container::after { top: 25px; right: 25px; }
+.clock-container-inner-screws::before { bottom: 25px; left: 25px; }
+.clock-container-inner-screws::after { bottom: 25px; right: 25px; }
 
 .clock-header h1 {
-  font-weight: 800;
-  letter-spacing: 8px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 12px;
   text-transform: uppercase;
-  font-size: 1.2rem;
-  opacity: 1;
+  font-size: 2.8rem;
   margin: 0;
-  color: #ffffff;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(to bottom, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* CALM Animated Lines */
+.case-line {
+  width: 65%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: lineShimmer 8s ease-in-out infinite;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.4);
+}
+
+@keyframes lineShimmer {
+  0% { opacity: 0.4; background-position: -200% 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; background-position: 200% 0; }
 }
 
 .row {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
 }
 
-/* Individual light styles */
-.light {
-  height: 52px;
-  flex: 1;
-  border-radius: 12px;
-  background: var(--off-color);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
-}
-
-.light::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--glass-gloss);
-  pointer-events: none;
-  opacity: 0.8;
-}
-
-/* Round Leap Second Light */
-.light.round {
-  height: 80px;
-  width: 80px;
-  flex: none;
-  border-radius: 50%;
-  margin: 0 auto 1rem auto;
-}
-
-/* Smaller Minute Lights */
-.light-small {
-  height: 44px;
-  flex: 1;
-  border-radius: 6px;
-  background: var(--off-color);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.light, .light-small {
+  background: #0d0d0f;
+  border-radius: 20px;
   transition: all 0.3s ease;
   position: relative;
+  overflow: hidden;
+  border: 1.5px solid rgba(255,255,255,0.04);
+  box-shadow: inset 0 3px 6px rgba(0,0,0,1);
 }
 
-/* States */
+.light { height: 50px; flex: 1; }
+.light-small { height: 40px; flex: 1; }
+
+/* Realistischer Glas-Orb für Sekunden (Clearer) */
+.light.round {
+  width: 105px; height: 105px;
+  flex: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, #252528, #050505);
+  border: 4px solid #333;
+  box-shadow: inset 0 10px 20px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3);
+  margin-bottom: 1.5rem;
+}
+
+.light.round.yellow {
+  background: radial-gradient(circle at 50% 30%, #ffea00, #ffcc00);
+  box-shadow: 0 0 35px var(--yellow-glow), inset 0 5px 15px rgba(255,255,255,0.5);
+  border-color: #ffaa00;
+}
+
+.light:not(.round)::after, .light-small::after {
+  content: '';
+  position: absolute;
+  top: 15%; left: 5%; right: 5%; height: 25%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+}
+
 .yellow {
-  background: var(--yellow-lit);
-  box-shadow: 
-    0 0 25px var(--yellow-glow), 
-    inset 0 0 15px rgba(255, 255, 255, 0.6),
-    0 0 2px rgba(255, 255, 255, 0.8);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: #ffcc00;
+  box-shadow: 0 0 30px var(--yellow-glow);
 }
 
 .red {
-  background: var(--red-lit);
-  box-shadow: 
-    0 0 25px var(--red-glow), 
-    inset 0 0 15px rgba(255, 255, 255, 0.4),
-    0 0 2px rgba(255, 255, 255, 0.6);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #c20000;
+  box-shadow: 0 0 30px var(--red-glow);
 }
 
-.off {
-  background: var(--off-color);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+.help-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.2rem;
 }
 
-.digital-time {
-  margin-top: 2rem;
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  font-size: 2.5rem;
-  letter-spacing: 4px;
-  color: #ffffff;
-  opacity: 0.9;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-  font-variant-numeric: tabular-nums;
+/* Help-Button with Integrated Analog Icon */
+.help-button {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #444, #111);
+  border: 2px solid #555;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: breathe 4s ease-in-out infinite;
 }
 
-/* Value labels - Only show when lit or very subtly when off */
-.light::before,
-.light-small::before {
-  content: attr(data-value);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.6rem;
-  font-weight: 700;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.analog-sketch {
+  position: relative;
+  width: 100%; height: 100%;
+  display: flex; justify-content: center; align-items: center;
   pointer-events: none;
 }
 
-.light:hover::before,
-.light-small:hover::before {
-  opacity: 0.3;
+.hand {
+  position: absolute;
+  background: rgba(255,255,255,0.4);
+  bottom: 50%; left: 50%;
+  transform-origin: bottom center;
 }
 
-.light:not(.off)::before,
-.light-small:not(.off)::before {
-  opacity: 0.6;
-  color: rgba(0, 0, 0, 0.4);
+.hand.hour {
+  width: 1.5px; height: 5px;
+  transform: translateX(-50%) rotate(130deg);
 }
 
-/* Animations */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.hand.minute {
+  width: 1px; height: 8px;
+  transform: translateX(-50%) rotate(40deg);
 }
 
-.round.yellow {
-  animation: pulse 2s infinite ease-in-out;
+.help-button.active {
+  animation: none;
+  background: #fff; border-color: #fff;
+  box-shadow: 0 0 20px #fff;
 }
 
-footer {
-  margin-top: 2rem;
-  font-size: 0.7rem;
-  opacity: 0.4;
-  letter-spacing: 2px;
+.help-button.active .hand {
+  background: #111;
+}
+
+@keyframes breathe {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+.digital-time {
+  margin-top: 1.8rem;
+  font-weight: 800; font-size: 2.8rem;
+  color: #fff; opacity: 0.8;
+  letter-spacing: 5px;
+}
+
+/* Chrome-Stange */
+.clock-pole {
+  width: 52px;
+  position: fixed;
+  top: 0; bottom: 0;
+  margin: auto;
+  height: 100vh;
+  background: linear-gradient(90deg, 
+    #111 0%, #444 15%, #888 30%, #eee 45%, #fff 50%, #eee 55%, #888 70%, #444 85%, #111 100%);
+  box-shadow: 15px 0 40px rgba(0,0,0,0.6);
+  z-index: 5;
+  clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
 }
