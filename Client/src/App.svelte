@@ -38,36 +38,51 @@
 <main class="mainPanel">
   <div class="clock-assembly">
     <div class="clock-container">
-      <div class="clock-container-inner-screws"></div>
       <header class="clock-header">
         <h1>Berlin-Uhr</h1>
       </header>
 
-      <div class="light round {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
+      <div class="seconds-orb {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
 
       <div class="case-line"></div>
 
       <div class="row">
         {#each Array(4) as _, i}
-          <div class="light {i < clock.hoursFive ? 'red' : 'off'}" data-value="5h"></div>
+          <div class="light {i < clock.hoursFive ? 'red' : 'off'}">
+            {#if showDigitalTime && i < clock.hoursFive}
+              <span class="segment-value">5h</span>
+            {/if}
+          </div>
         {/each}
       </div>
 
       <div class="row">
         {#each Array(4) as _, i}
-          <div class="light {i < clock.hoursOne ? 'red' : 'off'}" data-value="1h"></div>
+          <div class="light {i < clock.hoursOne ? 'red' : 'off'}">
+            {#if showDigitalTime && i < clock.hoursOne}
+              <span class="segment-value">1h</span>
+            {/if}
+          </div>
         {/each}
       </div>
 
-      <div class="row">
+      <div class="row row-11">
         {#each Array(11) as _, i}
-          <div class="light-small {i < clock.minutesFive ? ((i + 1) % 3 === 0 ? 'red' : 'yellow') : 'off'}" data-value=""></div>
+          <div class="light-small {i < clock.minutesFive ? ((i + 1) % 3 === 0 ? 'red' : 'yellow') : 'off'}">
+            {#if showDigitalTime && i < clock.minutesFive}
+              <span class="segment-value">5m</span>
+            {/if}
+          </div>
         {/each}
       </div>
 
       <div class="row">
         {#each Array(4) as _, i}
-          <div class="light {i < clock.minutesOne ? 'yellow' : 'off'}" data-value=""></div>
+          <div class="light {i < clock.minutesOne ? 'yellow' : 'off'}">
+            {#if showDigitalTime && i < clock.minutesOne}
+              <span class="segment-value">1m</span>
+            {/if}
+          </div>
         {/each}
       </div>
 
@@ -75,20 +90,16 @@
 
       <div class="help-section">
         <button class="help-button {showDigitalTime ? 'active' : ''}" on:click={toggleTime} title="Zeit anzeigen">
-          <div class="analog-sketch">
-            <div class="hand hour"></div>
-            <div class="hand minute"></div>
-          </div>
+          <span class="help-icon">?</span>
         </button>
         {#if showDigitalTime}
           <div class="digital-time">
             {String(clock.hoursFive * 5 + clock.hoursOne).padStart(2, "0")}:{String(
               clock.minutesFive * 5 + clock.minutesOne,
-            ).padStart(2, "0")}
+            ).padStart(2, "0")}:{String(clock.seconds).padStart(2, "0")}
           </div>
         {/if}
       </div>
     </div>
-    <div class="clock-pole"></div>
   </div>
 </main>
