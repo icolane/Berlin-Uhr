@@ -7,7 +7,7 @@ import (
 
 func TestBerlinClockLogic(t *testing.T) {
 	// Teste 23:59:59 (Maximale Zeit)
-	testC	ase1 := time.Date(2024, 1, 1, 23, 59, 59, 0, time.UTC)
+	testCase1 := time.Date(2024, 1, 1, 23, 59, 59, 0, time.UTC)
 	result1 := getBerlinClock(testCase1)
 
 	if result1.HoursFive != 4 || result1.HoursOne != 3 {
