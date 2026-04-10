@@ -58,6 +58,3 @@ go test -v ./...
 
 ## Screenshots
 
-<p align="center">
-  <img src="assets/berlin-uhr-no-help.jpg" alt="Beschreibung" width="600">
-</p>
