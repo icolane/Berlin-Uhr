@@ -5,8 +5,8 @@ Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr). Es ha
 ## Screenshots
 
 <ul>
-  <li><img src="https://github.com/user-attachments/assets/8d1c0225-1e57-41b0-91f6-aa48b2750538" width="200" /></li>
-  <li><img src="https://github.com/user-attachments/assets/d039c662-32d4-4f55-83d3-a7f804143ae4" /></li>
+  <img src="https://github.com/user-attachments/assets/8d1c0225-1e57-41b0-91f6-aa48b2750538" width="200" />
+  <img src="https://github.com/user-attachments/assets/d039c662-32d4-4f55-83d3-a7f804143ae4" width="200" />
 </ul>
 
 
