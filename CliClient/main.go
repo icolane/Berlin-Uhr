@@ -49,22 +49,23 @@ func printClockToConsole(c ClockResponse) {
 	reset := "\033[0m"
 	fgBlue := "\033[34m"
 	fgCyan := "\033[36m"
-	fgGreen := "\033[32m"
+	//fgGreen := "\033[32m"
 	fgWhite := "\033[97m"
 	fgGray := "\033[90m"
 	fgStatusGreen := "\033[32m"
 	fgYellow := "\033[33m"
 
-	// Window Title setzen & Cursor an den Anfang
+	// Bildschirm leeren & Window Title setzen
+	clearScreen()
 	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
-	fmt.Print("\033[H")
 
-	s := fgGray + "░░" + reset
+	s := fmt.Sprintf("%02d", c.Seconds)
 	if c.IsLeapSecond {
-		s = fgYellow + "██" + reset
+		s = fgYellow + s + reset
+	} else {
+		s = fgGray + s + reset
 	}
 
-	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
 	fmt.Printf("%s====================================================%s\n", fgCyan, reset)
 	fmt.Printf(" [ SYSTEM STATUS ]:  %sONLINE%s     [ TIME ]: %s %02d:%02d:%02d %s\n", fgStatusGreen, reset, fgWhite, (c.HoursFive*5 + c.HoursOne), (c.MinutesFive*5 + c.MinutesOne), c.Seconds, reset)
 	fmt.Printf(" [ BLINKER      ]:  %s\n\n", s)
@@ -97,7 +98,7 @@ func printClockToConsole(c ClockResponse) {
 		char := "██"
 		color := fgGray
 		if i <= c.SecondsFive {
-			color = fgGreen
+			color = fgYellow
 		} else {
 			char = "░░"
 		}
@@ -105,10 +106,10 @@ func printClockToConsole(c ClockResponse) {
 	}
 	fmt.Println("\n")
 
-	printBlockRow(" 1-SEKUNDE      ", c.SecondsOne, 4, fgGreen, fgGray, "██████")
+	printBlockRow(" 1-SEKUNDE      ", c.SecondsOne, 4, fgYellow, fgGray, "██████")
 
 	fmt.Printf("%s====================================================%s\n", fgCyan, reset)
-	fmt.Printf(" %sLEGENDE:%s  %s■ STUNDEN%s  %s■ MINUTEN%s  %s■ SEKUNDEN%s  %s● BLINKER%s\n", fgWhite, reset, fgBlue, reset, fgCyan, reset, fgGreen, reset, fgYellow, reset)
+	fmt.Printf(" %sLEGENDE:%s  %s■ STUNDEN%s  %s■ MINUTEN%s  %s■ SEKUNDEN/BLINKER%s\n", fgWhite, reset, fgBlue, reset, fgCyan, reset, fgYellow, reset)
 	fmt.Printf(" %s(c) 2026 Developed by Daniel Layne%s\n", fgGray, reset)
 }
 
@@ -118,8 +119,8 @@ func printErrorToConsole(err error) {
 	fgRed := "\033[31m"
 	fgWhite := "\033[97m"
 
-	// Cursor an den Anfang
-	fmt.Print("\033[H\033[2J")
+	// Bildschirm leeren
+	clearScreen()
 	fmt.Print("\033]0;BERLIN-UHR | CONNECTION ERROR\007")
 
 	fmt.Printf("%s┌──────────────────────────────────────────────────┐%s\n", fgRed, reset)
@@ -131,6 +132,12 @@ func printErrorToConsole(err error) {
 	fmt.Printf("%sSTATUS:%s   %sSUCHE SERVER... (http://localhost:8080)%s\n", fgWhite, reset, fgRed, reset)
 	fmt.Printf("%sFEHLER:%s   %v\n\n", fgWhite, reset, err)
 	fmt.Printf("%sDas System versucht jede Sekunde die Verbindung neu aufzubauen.%s\n", fgWhite, reset)
+
+}
+
+// Hilfsfunktion zum Leeren des Terminals (ANSI Escape Codes)
+func clearScreen() {
+	fmt.Print("\033[H\033[2J")
 }
 
 // Hilfsfunktion zur Ausgabe der farbigen Blöcke

@@ -44,7 +44,11 @@
       <header class="clock-header">
         <h1>Berlin-Uhr</h1>
       </header>
-      <div class="seconds-orb {clock.isLeapSecond ? 'yellow' : 'off'}"></div>
+      <div class="seconds-orb {clock.isLeapSecond ? 'yellow' : 'off'}">
+        {#if showDigitalTime}
+          <span class="orb-value">{clock.seconds}</span>
+        {/if}
+      </div>
       <div class="case-line"></div>
       
       <!-- Stunden -->
@@ -95,28 +99,30 @@
         {/each}
       </div>
 
-      <div class="case-line"></div>
+      {#if showDigitalTime}
+        <div class="case-line"></div>
 
-      <!-- Sekunden (Neu) -->
-      <div class="row row-11">
-        {#each Array(11) as _, i}
-          <div class="light-small-secsFive {i < clock.secondsFive ? 'lime' : 'off'}">
-            {#if showDigitalTime && i < clock.secondsFive}
-              <span class="segment-value">5s</span>
-            {/if}
-          </div>
-        {/each}
-      </div>
+        <!-- Sekunden (Neu) -->
+        <div class="row row-11">
+          {#each Array(11) as _, i}
+            <div class="light-small-secsFive {i < clock.secondsFive ? 'amber' : 'off'}">
+              {#if showDigitalTime && i < clock.secondsFive}
+                <span class="segment-value">5s</span>
+              {/if}
+            </div>
+          {/each}
+        </div>
 
-      <div class="row">
-        {#each Array(4) as _, i}
-          <div class="light-small-secsOne {i < clock.secondsOne ? 'lime' : 'off'}">
-            {#if showDigitalTime && i < clock.secondsOne}
-              <span class="segment-value">1s</span>
-            {/if}
-          </div>
-        {/each}
-      </div>
+        <div class="row">
+          {#each Array(4) as _, i}
+            <div class="light-small-secsOne {i < clock.secondsOne ? 'amber' : 'off'}">
+              {#if showDigitalTime && i < clock.secondsOne}
+                <span class="segment-value">1s</span>
+              {/if}
+            </div>
+          {/each}
+        </div>
+      {/if}
 
 
       <div class="help-section">

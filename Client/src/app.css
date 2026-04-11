@@ -97,6 +97,17 @@ body {
   margin-bottom: 0.3rem;
   /* REDUCED MARGIN */
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orb-value {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  z-index: 10;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 1);
 }
 
 .seconds-orb.yellow {
@@ -206,6 +217,11 @@ body {
 .magenta {
   background: var(--violet-lit) !important;
   box-shadow: 0 0 15px var(--violet-glow) !important;
+}
+
+.amber {
+  background: var(--amber-lit) !important;
+  box-shadow: 0 0 15px var(--amber-glow) !important;
 }
 
 .lime {
