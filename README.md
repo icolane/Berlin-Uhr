@@ -1,6 +1,6 @@
 # Berlin-Uhr - Cyber-Monitor v2.0
 
-Dieses Projekt ist eine hochmoderne Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem performanten Go-Backend, einem modernen Svelte-Webfrontend im "Cyber-Corporate"-Design und einem professionellen CLI-Client.
+Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem performanten Go-Backend, einem Svelte-Webfrontend und einem professionellen CLI-Client.
 
 ## Features & Highlights
 
