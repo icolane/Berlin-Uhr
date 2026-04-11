@@ -2,6 +2,14 @@
 
 Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem Go-Backend, einem Svelte-Webfrontend und einem kommandozeilenbasierten Client.
 
+## Screenshots
+
+<p>
+  <img src="https://github.com/user-attachments/assets/8d1c0225-1e57-41b0-91f6-aa48b2750538" width="200" />
+</p>
+<p>
+<img src="https://github.com/user-attachments/assets/d039c662-32d4-4f55-83d3-a7f804143ae4" />
+</p>
 ## Voraussetzungen
 
 Für den Betrieb und die Kompilierung der Anwendung werden folgende Komponenten benötigt:

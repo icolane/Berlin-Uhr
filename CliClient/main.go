@@ -112,7 +112,6 @@ func printClockToConsole(c ClockResponse) {
 	fmt.Printf(" %s(c) 2026 Developed by Daniel Layne%s\n", fgGray, reset)
 }
 
-
 // Zeigt einen  Fehlerbildschirm an, wenn der Server nicht erreichbar ist
 func printErrorToConsole(err error) {
 	reset := "\033[0m"
