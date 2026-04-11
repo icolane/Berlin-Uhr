@@ -2,15 +2,6 @@
 
 Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem Go-Backend, einem Svelte-Webfrontend und einem kommandozeilenbasierten Client.
 
-## ::camera:: Screenshots
-
-<p>
-  <img src="https://github.com/user-attachments/assets/8d1c0225-1e57-41b0-91f6-aa48b2750538" width="200" />
-  <img src="https://github.com/user-attachments/assets/d039c662-32d4-4f55-83d3-a7f804143ae4" width="200" />
-  <img src="https://github.com/user-attachments/assets/7160dfe6-aeb4-4adf-81e2-40bee12ca2c2" width="250" />
-</p>
-
-
 ## Voraussetzungen
 
 Für den Betrieb und die Kompilierung der Anwendung werden folgende Komponenten benötigt:
@@ -79,3 +70,12 @@ go test -v ./...
 Dieses Projekt nutzt Logiken der Berlin-Uhr von icolane.
 Autor: icolane
 Quelle: https://github.com/icolane/Berlin-Uhr/
+
+
+## :camera: Screenshots
+<p>
+  <img src="https://github.com/user-attachments/assets/8d1c0225-1e57-41b0-91f6-aa48b2750538" width="200" />
+  <img src="https://github.com/user-attachments/assets/d039c662-32d4-4f55-83d3-a7f804143ae4" width="200" />
+  <img src="https://github.com/user-attachments/assets/7160dfe6-aeb4-4adf-81e2-40bee12ca2c2" width="250" />
+</p>
+
