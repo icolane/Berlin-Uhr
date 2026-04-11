@@ -1,76 +1,71 @@
-# Berlin-Uhr - Client-Server Applikation
+# Berlin-Uhr - Cyber-Monitor v2.0
 
-Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem Go-Backend, einem Svelte-Webfrontend und einem kommandozeilenbasierten Client.
+Dieses Projekt ist eine hochmoderne Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem performanten Go-Backend, einem modernen Svelte-Webfrontend im "Cyber-Corporate"-Design und einem professionellen CLI-Client.
+
+## Features & Highlights
+
+*   **[NEW] Cyber-Monitor CLI**: Ein flickerfreier Terminal-Client mit ANSI-Farben, Echtzeit-Update-Logik und integrierter Sekundenanzeige im Blinker.
+*   **[NEW] Interaktive Web-UI**: Ein minimalistisches, premium Design mit einem "Help-Modus" (Fragezeichen-Icon), der detaillierte Informationen und digitale Zeitwerte per Klick einblendet.
+*   **Flicker-Free Rendering**: Sowohl CLI als auch Web nutzen optimierte Update-Zyklen für eine flüssige Visualisierung.
+*   **RESTful Core**: Ein robustes Go-Backend berechnet die Zeitsegmente präzise nach der Mengenlehreuhr-Logik.
 
 ## Voraussetzungen
 
-Für den Betrieb und die Kompilierung der Anwendung werden folgende Komponenten benötigt:
-
-*   **Go**: Version 1.20 oder höher (für Backend und CLI-Client).
-*   **Node.js**: Version 18.x oder höher.
-*   **npm**: Version 9.x oder höher (für das Web-Frontend).
-*   **PowerShell**: (Optional, für die Nutzung des Windows-Build-Skripts).
+*   **Go**: Version 1.20 oder höher.
+*   **Node.js**: Version 18.x oder höher (für das Web-Frontend).
+*   **npm**: Version 9.x oder höher.
 
 ## System-Architektur
 
-Das System ist in drei Komponenten unterteilt:
-
 1.  **Backend (Go-Server)**:
-    *   Stellt eine REST-API bereit, die die berechneten Uhrzeit-Daten als JSON liefert.
-    *   Berechnet die Zeitsegmente (Stunden, Minuten, Sekunden) gemäß der Logik der Berliner Uhr.
-    *   Beinhaltet Unit-Tests für die Kernlogik.
+    *   Liefert Zeitdaten als JSON über eine REST-API.
+    *   Präzise Berechnung der Stunden- (5h/1h), Minuten- (5m/1m) und Sekundensegmente.
+    *   Unit-Tests für die Validierung der Zeitlogik.
 2.  **Web-Frontend (Svelte)**:
-    *   Visualisiert die Uhrzeit in einer grafischen Oberfläche.
-    *   Abfrage der Daten erfolgt über die REST-API des Backends.
-    *   Bietet eine optionale numerische Anzeige der Zeitwerte.
+    *   **Minimalist Design**: Standardmäßig fokussiert auf die reine Licht-Visualisierung.
+    *   **Help-Modus**: Blendet per Klick die Sekunden-Segmente und die digitale Uhrzeit ein.
+    *   **Dynamic Colors**: Amber-Blinker mit integrierter Sekunden-Zahl.
 3.  **CLI-Client (Go)**:
-    *   Eine Konsolen-Anwendung, die die Uhrzeit in das Terminal rendert.
-    *   Nutzt ANSI-Escape-Sequenzen für die farbige Darstellung der Zeitblöcke.
+    *   **Cyber-Monitor Look**: Hochwertige ASCII/ANSI-Visualisierung.
+    *   **Clearscreen-Logik**: Verhindert Flackern und zeigt Status-Informationen übersichtlich an.
 
 ## Installation & Betrieb
 
-### 1. Backend & Server
-Navigieren Sie in das Verzeichnis `BerlinClock` und starten Sie den Server:
+### 1. Backend
 ```bash
+cd BerlinClock
 go run main.go
 ```
-*Der Server ist standardmäßig unter `http://localhost:8080/time` erreichbar.*
+*API: `http://localhost:8080/time`*
 
 ### 2. Web-Frontend
-Navigieren Sie in das Verzeichnis `Client`, installieren Sie die Abhängigkeiten und starten Sie den Entwicklungs-Server:
 ```bash
+cd Client
 npm install
 npm run dev
 ```
 
 ### 3. CLI-Client
-Navigieren Sie in das Verzeichnis `CliClient` und starten Sie die Anwendung:
 ```bash
+cd CliClient
 go run main.go
 ```
 
 ## Kompiliervorgang (Windows)
-
-Zur Erstellung von ausführbaren Dateien (.exe) kann das bereitgestellte PowerShell-Skript genutzt werden:
+Nutzen Sie das Build-Skript für Standalone-Executables:
 ```powershell
 .\build.ps1
 ```
-Die Dateien werden im Ordner `build` abgelegt.
 
 ## Unit-Tests
-
-Ausführung der Tests für die Zeitberechnung:
 ```bash
 cd BerlinClock
 go test -v ./...
 ```
 
 ## Lizensierung und Quellen
-
 Dieses Projekt nutzt Logiken der Berlin-Uhr von icolane.
-Autor: icolane
-Quelle: https://github.com/icolane/Berlin-Uhr/
-
+Autor: icolane | Quelle: https://github.com/icolane/Berlin-Uhr/
 
 ## :camera: Screenshots
 <p>
