@@ -1,13 +1,21 @@
-# Berlin-Uhr - Cyber-Monitor v2.0
+# Berlin-Uhr - Coding Challenge / Technical Demo
 
-Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr). Es handelt sich um eine Fullstack-Anwendung bestehend aus einem performanten Go-Backend, einem Svelte-Webfrontend und einem professionellen CLI-Client.
+Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr) im Rahmen einer technischen Case Study (Job-Bewerbung). Es dient zur Demonstration von Fullstack-Kompetenzen, sauberer Software-Architektur und performanter Implementierung in Go und Svelte.
 
-## Features & Highlights
+## Projekt-Kontext & Zielsetzung
+Dieses Repository wurde als Teil einer Bewerbung erstellt, um Fähigkeiten in den folgenden Bereichen zu demonstrieren:
+- **Clean Code & Unit Testing** (Backend-Validierung).
+- **Backend-Entwicklung mit Go** (REST-API, Performance-Optimierung).
+- **Frontend-Entwicklung mit Svelte** (Modernes UI/UX, CSS-Animationen).
+- **Systemprogrammierung** (CLI-Client, ANSI-Terminal-Handling).
+- **Tooling** (CI/CD-Ansätze, Build-Skripte).
 
-*   **[NEW] Cyber-Monitor CLI**: Ein flickerfreier Terminal-Client mit ANSI-Farben, Echtzeit-Update-Logik und integrierter Sekundenanzeige im Blinker.
-*   **[NEW] Interaktive Web-UI**: Ein minimalistisches, premium Design mit einem "Help-Modus" (Fragezeichen-Icon), der detaillierte Informationen und digitale Zeitwerte per Klick einblendet.
-*   **Flicker-Free Rendering**: Sowohl CLI als auch Web nutzen optimierte Update-Zyklen für eine flüssige Visualisierung.
-*   **RESTful Core**: Ein robustes Go-Backend berechnet die Zeitsegmente präzise nach der Mengenlehreuhr-Logik.
+## Kern-Features & Architektur
+
+*   **Zentrales Backend**: Ein Go-Server, der die Berlin-Uhr-Logik präzise abbildet und per REST-API bereitstellt.
+*   **Präzisions-CLI (Go)**: Ein flickerfreier Terminal-Client mit ANSI-Farben, optimiertem Update-Zyklus und Echtzeit-Logik.
+*   **Premium Web-Frontend (Svelte)**: Responsive UI mit minimalistischem Glassmorphism-Design, CSS-Gradients und interaktivem "Help-Modus".
+*   **Performance & Stabilität**: Konsequente Verwendung von optimierten Render-Zyklen (CLI & Web) sowie eine saubere Trennung der Concerns.
 
 ## Voraussetzungen
 
@@ -63,8 +71,8 @@ cd BerlinClock
 go test -v ./...
 ```
 
-## Lizensierung und Quellen
-Dieses Projekt nutzt Logiken der Berlin-Uhr von icolane.
+## Lizenz & Hinweis
+Dieses Projekt wurde als technische Demo erstellt und steht nicht zum Verkauf. Es basiert auf der Logik der Berlin-Uhr (icolane).
 Autor: icolane | Quelle: https://github.com/icolane/Berlin-Uhr/
 
 ## :camera: Screenshots

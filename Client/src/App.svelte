@@ -1,4 +1,5 @@
 <script>
+  // Importiere die notwendigen Funktionen von Svelte
   import { onMount } from "svelte";
   import "./App.css";
   let clock = {
@@ -50,7 +51,7 @@
         {/if}
       </div>
       <div class="case-line"></div>
-      
+
       <!-- Stunden -->
       <div class="row">
         {#each Array(4) as _, i}
@@ -102,10 +103,14 @@
       {#if showDigitalTime}
         <div class="case-line"></div>
 
-        <!-- Sekunden (Neu) -->
+        <!-- Sekunden  -->
         <div class="row row-11">
           {#each Array(11) as _, i}
-            <div class="light-small-secsFive {i < clock.secondsFive ? 'amber' : 'off'}">
+            <div
+              class="light-small-secsFive {i < clock.secondsFive
+                ? 'amber'
+                : 'off'}"
+            >
               {#if showDigitalTime && i < clock.secondsFive}
                 <span class="segment-value">5s</span>
               {/if}
@@ -115,7 +120,11 @@
 
         <div class="row">
           {#each Array(4) as _, i}
-            <div class="light-small-secsOne {i < clock.secondsOne ? 'amber' : 'off'}">
+            <div
+              class="light-small-secsOne {i < clock.secondsOne
+                ? 'amber'
+                : 'off'}"
+            >
               {#if showDigitalTime && i < clock.secondsOne}
                 <span class="segment-value">1s</span>
               {/if}
@@ -123,7 +132,6 @@
           {/each}
         </div>
       {/if}
-
 
       <div class="help-section">
         <button
