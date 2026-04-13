@@ -87,10 +87,9 @@ func printClockToConsole(c ClockResponse) {
 		}
 		fmt.Printf("%s%s%s ", color, char, reset)
 	}
-	fmt.Println("\n")
+	fmt.Println("\n") // Zusätzliche Zeile für Abstand, nimmt man nicht ("\n")	Ist die Anzeige fehlerhaft, da die Blöcke zu nah beieinander stehen
 
 	printBlockRow(" 1-MINUTE       ", c.MinutesOne, 4, fgCyan, fgGray, "██████")
-
 	fmt.Printf("%s----------------------------------------------------%s\n", fgGray, reset)
 
 	fmt.Printf(" 5-SEKUNDEN     ")
@@ -104,7 +103,7 @@ func printClockToConsole(c ClockResponse) {
 		}
 		fmt.Printf("%s%s%s ", color, char, reset)
 	}
-	fmt.Println("\n")
+	fmt.Println("\n") // Zusätzliche Zeile für Abstand, nimmt man nicht ("\n")	Ist die Anzeige fehlerhaft, da die Blöcke zu nah beieinander stehen
 
 	printBlockRow(" 1-SEKUNDE      ", c.SecondsOne, 4, fgYellow, fgGray, "██████")
 
@@ -153,5 +152,5 @@ func printBlockRow(label string, active, total int, activeColor, offColor string
 		}
 		fmt.Printf("%s%s%s  ", color, char, reset)
 	}
-	fmt.Println("\n")
+	fmt.Println("\n") // Zusätzliche Zeile für Abstand, nimmt man nicht ("\n")	Ist die Anzeige fehlerhaft, da die Blöcke zu nah beieinander stehen
 }
