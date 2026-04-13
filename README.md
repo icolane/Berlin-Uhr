@@ -76,9 +76,7 @@ Dieses Projekt wurde als technische Demo erstellt und steht nicht zum Verkauf. E
 Autor: icolane | Quelle: https://github.com/icolane/Berlin-Uhr/
 
 ## :camera: Screenshots
-<p>
-  <img src="https://github.com/user-attachments/assets/8d1c0225-1e57-41b0-91f6-aa48b2750538" width="200" />
-  <img src="https://github.com/user-attachments/assets/d039c662-32d4-4f55-83d3-a7f804143ae4" width="200" />
-  <img src="https://github.com/user-attachments/assets/7160dfe6-aeb4-4adf-81e2-40bee12ca2c2" width="250" />
-</p>
 
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/6f80669a-62d2-4842-a63e-35f5e12ca315" width="600" />
+</p>
