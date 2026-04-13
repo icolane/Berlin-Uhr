@@ -80,3 +80,6 @@ Autor: icolane | Quelle: https://github.com/icolane/Berlin-Uhr/
 <p align="center">
    <img src="https://github.com/user-attachments/assets/6f80669a-62d2-4842-a63e-35f5e12ca315" width="600" />
 </p>
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/20890c76-5a38-4a44-8c11-ca871d737ef8" width="600" />
+</p>
