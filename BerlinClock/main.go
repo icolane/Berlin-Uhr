@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 )
@@ -47,13 +48,23 @@ func getBerlinClock(t time.Time) ClockResponse {
 // clockHandler nimmt die aktuelle Zeit, berechnet die Berliner Uhr und gibt die Werte als JSON zurück
 func clockHandler(writer http.ResponseWriter, reader *http.Request) {
 	writer.Header().Set("Access-Control-Allow-Origin", "*")
-	json.NewEncoder(writer).Encode(getBerlinClock(time.Now()))
+	writer.Header().Set("Content-Type", "application/json")
+	currentTime := time.Now()
+	log.Printf("🕐 Request: %s | Time: %02d:%02d:%02d", reader.RemoteAddr, currentTime.Hour(), currentTime.Minute(), currentTime.Second())
+	json.NewEncoder(writer).Encode(getBerlinClock(currentTime))
 }
 
 func main() {
+	fmt.Println("\n" + "════════════════════════════════════════════════════════════")
+	fmt.Println("  ⏰ Berlin-Uhr Server")
+	fmt.Println("════════════════════════════════════════════════════════════")
+	fmt.Println("  📡 Server läuft auf:      http://localhost:8080")
+	fmt.Println("  🌐 API Endpoint:         http://localhost:8080/time")
+	fmt.Println("  🖥️  Webclient auf:        http://localhost:5173")
+	fmt.Println("════════════════════════════════════════════════════════════")
+	fmt.Println("  Status: ✓ Bereit für Anfragen")
 
 	http.HandleFunc("/time", clockHandler)
-	fmt.Println("Berlin-Uhr Server läuft auf http://localhost:8080")
-	fmt.Println("Verbinden mit dem Webclient unter http://localhost:5173")
-	http.ListenAndServe(":8080", nil)
+
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
