@@ -8,7 +8,7 @@ import (
 )
 
 type ClockResponse struct {
-	IsLeapSecond bool `json:"isLeapSecond"`
+	IsLeapSecond bool `json:"isLeapSecond"` // Schaltsekunde 60 / 0...
 	HoursFive    int  `json:"hoursFive"`
 	HoursOne     int  `json:"hoursOne"`
 	MinutesFive  int  `json:"minutesFive"`
