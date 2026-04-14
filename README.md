@@ -13,9 +13,8 @@ Dieses Repository wurde als Teil einer Bewerbung erstellt, um Fähigkeiten in de
 ## Kern-Features & Architektur
 
 *   **Zentrales Backend**: Ein Go-Server, der die Berlin-Uhr-Logik präzise abbildet und per REST-API bereitstellt.
-*   **Präzisions-CLI (Go)**: Ein flickerfreier Terminal-Client mit ANSI-Farben, optimiertem Update-Zyklus und Echtzeit-Logik.
-*   **Premium Web-Frontend (Svelte)**: Responsive UI mit minimalistischem Glassmorphism-Design, CSS-Gradients und interaktivem "Help-Modus".
-*   **Performance & Stabilität**: Konsequente Verwendung von optimierten Render-Zyklen (CLI & Web) sowie eine saubere Trennung der Concerns.
+*   **Web-Frontend (Svelte)**: Responsive UI mit minimalistischem Glassmorphism-Design, CSS-Gradients und interaktivem "Help-Modus".
+*   **CLI (Go)**: Ein flickerfreier Terminal-Client mit ANSI-Farben, optimiertem Update-Zyklus und Echtzeit-Logik.
 
 ## Voraussetzungen
 
@@ -27,14 +26,14 @@ Dieses Repository wurde als Teil einer Bewerbung erstellt, um Fähigkeiten in de
 
 1.  **Backend (Go-Server)**:
     *   Liefert Zeitdaten als JSON über eine REST-API.
-    *   Präzise Berechnung der Stunden- (5h/1h), Minuten- (5m/1m) und Sekundensegmente.
+    *   Berechnung der Stunden- (5h/1h), Minuten- (5m/1m) und Sekundensegmente.
     *   Unit-Tests für die Validierung der Zeitlogik.
 2.  **Web-Frontend (Svelte)**:
-    *   **Minimalist Design**: Standardmäßig fokussiert auf die reine Licht-Visualisierung.
+    *   *Design**: Standardmäßig fokussiert auf die reine Licht-Visualisierung.
     *   **Help-Modus**: Blendet per Klick die Sekunden-Segmente und die digitale Uhrzeit ein.
-    *   **Dynamic Colors**: Amber-Blinker mit integrierter Sekunden-Zahl.
+    
 3.  **CLI-Client (Go)**:
-    *   **Cyber-Monitor Look**: Hochwertige ASCII/ANSI-Visualisierung.
+    *   **Design**: Hochwertige ASCII/ANSI-Visualisierung.
     *   **Clearscreen-Logik**: Verhindert Flackern und zeigt Status-Informationen übersichtlich an.
 
 ## Installation & Betrieb
@@ -79,4 +78,7 @@ Autor: icolane | Quelle: https://github.com/icolane/Berlin-Uhr/
 
 <p align="center">
    <img src="https://github.com/user-attachments/assets/6f80669a-62d2-4842-a63e-35f5e12ca315" width="600" />
+</p>
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/20890c76-5a38-4a44-8c11-ca871d737ef8" width="600" />
 </p>
