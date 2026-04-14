@@ -1,20 +1,19 @@
-# Berlin-Uhr - Coding Challenge / Technical Demo
+# Berlin-Uhr (Mengenlehreuhr)
+# Projektbeschreibung
+Dieses Projekt ist eine digitale Nachbildung der Berliner Mengenlehreuhr, einer öffentlichen Uhr, die 1975 von Dieter Binninger entwickelt wurde. Die Anzeige der Uhrzeit erfolgt über ein Stellenwertsystem zur Basis 5, dargestellt durch insgesamt 24 Leuchtsegmente in vier horizontalen Zeilen sowie einem Sekunden-Blinklicht
 
-Dieses Projekt ist eine Implementierung der Berliner Uhr (Mengenlehreuhr) im Rahmen einer technischen Case Study (Job-Bewerbung). Es dient zur Demonstration von Fullstack-Kompetenzen, sauberer Software-Architektur und performanter Implementierung in Go und Svelte.
-
-## Projekt-Kontext & Zielsetzung
-Dieses Repository wurde als Teil einer Bewerbung erstellt, um Fähigkeiten in den folgenden Bereichen zu demonstrieren:
-- **Clean Code & Unit Testing** (Backend-Validierung).
-- **Backend-Entwicklung mit Go** (REST-API, Performance-Optimierung).
-- **Frontend-Entwicklung mit Svelte** (Modernes UI/UX, CSS-Animationen).
-- **Systemprogrammierung** (CLI-Client, ANSI-Terminal-Handling).
-- **Tooling** (CI/CD-Ansätze, Build-Skripte).
+## Funktionsweise der Anzeige
+Die Zeit wird durch Addition der leuchtenden Segmente berechnet:
+*   **Sekundenanzeige**: Ein rundes Blinklicht über den Zeilen, das im Sekundentakt blinkt.
+*   **Stunden(Zeile 1&2)**: Die erste Zeile zeigt Blöcke von je 5 Stunden, die zweite Zeile die einzelnen Stunden.
+*   **Minuten(Zeile 3&4)**: Die dritte Zeile zeigt Blöcke von je 5 Minuten (gelbe Segmente, wobei die Markierungen für 15, 30 und 45 Minuten zur besseren Lesbarkeit rot gefärbt sind). Die vierte Zeile zeigt einzelne Minuten in Gelb.
 
 ## Kern-Features & Architektur
 
-*   **Zentrales Backend**: Ein Go-Server, der die Berlin-Uhr-Logik präzise abbildet und per REST-API bereitstellt.
-*   **Web-Frontend (Svelte)**: Responsive UI mit minimalistischem Glassmorphism-Design, CSS-Gradients und interaktivem "Help-Modus".
-*   **CLI (Go)**: Ein flickerfreier Terminal-Client mit ANSI-Farben, optimiertem Update-Zyklus und Echtzeit-Logik.
+bereitstellt.
+*   **Zentrales Backend**: Service "BerlinClock" (Backend): Ein in Go implementierter Service, der die aktuelle Systemzeit berechnet und im geforderten Format für die Mengenlehreuhr bereitstellt
+*   **Client-Frontend (Svelte)**: : Eine Svelte-Webapplikation, welche die Daten des Services konsumiert und die Uhrzeit grafisch analog zum Original visualisiert.
+*   **CLI (Go)**: Zusätzlich eine CLI in GO.
 
 ## Voraussetzungen
 

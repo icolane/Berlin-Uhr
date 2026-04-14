@@ -19,7 +19,7 @@ type ClockResponse struct {
 	Seconds      int  `json:"seconds"`
 }
 
-// getBerlinClock berechnet die Werte der Berliner Uhr basierend auf der gegebenen Zeit
+// getBerlinClock() berechnet die Werte der Berliner Uhr basierend auf der gegebenen Zeit
 func getBerlinClock(t time.Time) ClockResponse {
 	hour := t.Hour()
 	minute := t.Minute()
@@ -54,6 +54,7 @@ func clockHandler(writer http.ResponseWriter, reader *http.Request) {
 	json.NewEncoder(writer).Encode(getBerlinClock(currentTime))
 }
 
+// main() startet den HTTP-Server und registriert den Handler für die /time Route
 func main() {
 	fmt.Println("\n" + "════════════════════════════════════════════════════════════")
 	fmt.Println("  ⏰ Berlin-Uhr Server")
