@@ -57,7 +57,7 @@ func printClockToConsole(c ClockResponse) {
 
 	// Bildschirm leeren & Window Title setzen
 	clearScreen()
-	fmt.Print("\033]0;BERLIN-UHR | CYBER-MONITOR v2.0\007")
+	fmt.Print("\033]0;BERLIN-UHR | MONITOR v2.0\007")
 
 	s := fmt.Sprintf("%02d", c.Seconds)
 	if c.IsLeapSecond {
