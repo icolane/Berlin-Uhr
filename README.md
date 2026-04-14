@@ -1,39 +1,35 @@
 # Berlin-Uhr (Mengenlehreuhr)
-# Projektbeschreibung
-Dieses Projekt ist eine digitale Nachbildung der Berliner Mengenlehreuhr, einer öffentlichen Uhr, die 1975 von Dieter Binninger entwickelt wurde. Die Anzeige der Uhrzeit erfolgt über ein Stellenwertsystem zur Basis 5, dargestellt durch insgesamt 24 Leuchtsegmente in vier horizontalen Zeilen sowie einem Sekunden-Blinklicht
 
-## Funktionsweise der Anzeige
-Die Zeit wird durch Addition der leuchtenden Segmente berechnet:
-*   **Sekundenanzeige**: Ein rundes Blinklicht über den Zeilen, das im Sekundentakt blinkt.
-*   **Stunden(Zeile 1&2)**: Die erste Zeile zeigt Blöcke von je 5 Stunden, die zweite Zeile die einzelnen Stunden.
-*   **Minuten(Zeile 3&4)**: Die dritte Zeile zeigt Blöcke von je 5 Minuten (gelbe Segmente, wobei die Markierungen für 15, 30 und 45 Minuten zur besseren Lesbarkeit rot gefärbt sind). Die vierte Zeile zeigt einzelne Minuten in Gelb.
+## Projektbeschreibung
+Dieses Projekt ist eine digitale Nachbildung der Berliner Mengenlehreuhr (auch Berlin-Uhr genannt). Die Anzeige der Uhrzeit erfolgt in einem Stellenwertsystem zur Basis 5, dargestellt durch insgesamt 24 Leuchtsegmente und ein Sekunden-Blinklicht.
 
-## Kern-Features & Architektur
+Das Ziel dieser Case Study war die Implementierung einer entkoppelten Architektur, bestehend aus einem Backend-Service zur Logikberechnung und einem Frontend-Client zur grafischen Visualisierung.
 
-bereitstellt.
-*   **Zentrales Backend**: Service "BerlinClock" (Backend): Ein in Go implementierter Service, der die aktuelle Systemzeit berechnet und im geforderten Format für die Mengenlehreuhr bereitstellt
-*   **Client-Frontend (Svelte)**: : Eine Svelte-Webapplikation, welche die Daten des Services konsumiert und die Uhrzeit grafisch analog zum Original visualisiert.
-*   **CLI (Go)**: Zusätzlich eine CLI in GO.
+### Funktionsweise
+Die Zeit wird durch Addition der leuchtenden Segmente in vier Zeilen dargestellt:
+* **Sekundenanzeige**: Ein rundes Blinklicht (oberhalb der Zeilen), das im Sekundentakt den Zustand wechselt.
+* **1. Zeile (Stunden)**: 4 rote Segmente; jedes Segment steht für 5 volle Stunden.
+* **2. Zeile (Stunden)**: 4 rote Segmente; jedes Segment steht für 1 volle Stunde.
+* **3. Zeile (Minuten)**: 11 Segmente; jedes Segment steht für 5 Minuten. 
+    * *Besonderheit*: Die Segmente für 15, 30 und 45 Minuten leuchten **rot**, alle anderen gelb.
+* **4. Zeile (Minuten)**: 4 gelbe Segmente; jedes Segment steht für 1 Minute.
 
-## Voraussetzungen
+## Architektur & Technologiewahl
+Entsprechend der Aufgabenstellung wurden zwei Programmiersprachen gewählt, die außerhalb meines bisherigen Repertoires liegen, um die Einarbeitungsfähigkeit in neue Ökosysteme zu demonstrieren.
 
-*   **Go**: Version 1.20 oder höher.
-*   **Node.js**: Version 18.x oder höher (für das Web-Frontend).
-*   **npm**: Version 9.x oder höher.
+### Backend: Service "BerlinClock"
+* **Sprache**: Go (Golang)
+* **Aufgabe**: Berechnung der Zeitintervalle und Bereitstellung der Daten über eine REST-Schnittstelle.
+* **Begründung**: Go wurde gewählt, um einen performanten und typsicheren Service zu realisieren. Die Kompilierbarkeit in eine statische Binärdatei gewährleistet ein unkompliziertes Deployment.
 
-## System-Architektur
+### Frontend: Client
+* **Sprache**: Svelte
+* **Aufgabe**: Konsumierung der API-Daten und reaktive grafische Darstellung der Uhr.
+* **Begründung**: Svelte bietet einen compiler-basierten Ansatz für Reaktivität ohne Virtual-DOM-Overhead. Dies ermöglicht eine effiziente, sekündliche Aktualisierung der UI mit minimalem Code-Footprint.
 
-1.  **Backend (Go-Server)**:
-    *   Liefert Zeitdaten als JSON über eine REST-API.
-    *   Berechnung der Stunden- (5h/1h), Minuten- (5m/1m) und Sekundensegmente.
-    *   Unit-Tests für die Validierung der Zeitlogik.
-2.  **Web-Frontend (Svelte)**:
-    *   *Design**: Standardmäßig fokussiert auf die reine Licht-Visualisierung.
-    *   **Help-Modus**: Blendet per Klick die Sekunden-Segmente und die digitale Uhrzeit ein.
-    
-3.  **CLI-Client (Go)**:
-    *   **Design**: Hochwertige ASCII/ANSI-Visualisierung.
-    *   **Clearscreen-Logik**: Verhindert Flackern und zeigt Status-Informationen übersichtlich an.
+## Qualitätssicherung
+* **Unit-Tests**: Die mathematische Umrechnungslogik im Backend ist durch automatisierte Tests in Go abgesichert (`main_test.go`).
+* **Separation of Concerns**: Strikte Trennung zwischen Geschäftslogik (Backend) und Präsentationsschicht (Frontend).
 
 ## Installation & Betrieb
 
