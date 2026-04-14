@@ -8,11 +8,11 @@ Das Ziel dieser Case Study war die Implementierung einer entkoppelten Architektu
 ### Funktionsweise
 Die Zeit wird durch Addition der leuchtenden Segmente in vier Zeilen dargestellt:
 * **Sekundenanzeige**: Ein rundes Blinklicht (oberhalb der Zeilen), das im Sekundentakt den Zustand wechselt.
-* **1. Zeile (Stunden)**: 4 rote Segmente; jedes Segment steht für 5 volle Stunden.
-* **2. Zeile (Stunden)**: 4 rote Segmente; jedes Segment steht für 1 volle Stunde.
+* **1. Zeile (Stunden)**: 4 blaue Segmente; jedes Segment steht für 5 volle Stunden.
+* **2. Zeile (Stunden)**: 4 cyan Segmente; jedes Segment steht für 1 volle Stunde.
 * **3. Zeile (Minuten)**: 11 Segmente; jedes Segment steht für 5 Minuten. 
     * *Besonderheit*: Die Segmente für 15, 30 und 45 Minuten leuchten **rot**, alle anderen gelb.
-* **4. Zeile (Minuten)**: 4 gelbe Segmente; jedes Segment steht für 1 Minute.
+* **4. Zeile (Minuten)**: 4 cyan Segmente; jedes Segment steht für 1 Minute.
 
 ## Architektur & Technologiewahl
 Entsprechend der Aufgabenstellung wurden zwei Programmiersprachen gewählt, die außerhalb meines bisherigen Repertoires liegen, um die Einarbeitungsfähigkeit in neue Ökosysteme zu demonstrieren.
