@@ -27,12 +27,7 @@ Entsprechend der Aufgabenstellung wurden zwei Programmiersprachen gewählt, die 
 * **Aufgabe**: Konsumierung der API-Daten und reaktive grafische Darstellung der Uhr.
 * **Begründung**: Svelte bietet einen compiler-basierten Ansatz für Reaktivität ohne Virtual-DOM-Overhead. Dies ermöglicht eine effiziente, sekündliche Aktualisierung der UI mit minimalem Code-Footprint.
 
-## Technologische Entscheidung
 
-Gemäß der Aufgabenstellung wurden Technologien gewählt, mit denen bisher keine praktische Erfahrung vorlag:
-
-* **Go (Backend):** Gewählt für die Erstellung eines effizienten, typsicheren Services. Go ermöglicht eine saubere Strukturierung der Umrechnungslogik und bietet eine hervorragende Performance für zeitbasierte API-Anfragen.
-* **Svelte (Frontend):** Gewählt für die grafische Darstellung. Der compiler-basierte Ansatz von Svelte erlaubt eine hochperformante, reaktive UI, die ideal für die sekündliche Aktualisierung der Mengenlehreuhr geeignet ist.
 
 ## Qualitätssicherung
 * **Unit-Tests**: Die mathematische Umrechnungslogik im Backend ist durch automatisierte Tests in Go abgesichert (`main_test.go`).
